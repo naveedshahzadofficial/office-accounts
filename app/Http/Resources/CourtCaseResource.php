@@ -16,9 +16,9 @@ class CourtCaseResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'cases_initiated' => $this->cases_initiated,
-            'cases_disposed_off' => $this->cases_disposed_off,
-            'cases_status' => $this->cases_status,
+            'case_initiated' => $this->case_initiated,
+            'case_disposed_off' => $this->case_disposed_off,
+            'case_status' => $this->case_status,
             'user_id' => $this->user_id,
             'created_at' => $this->created_at ? $this->created_at->format('d-m-Y') : null,
             'updated_at' => $this->updated_at ? $this->updated_at->format('d-m-Y') : null,

@@ -15,9 +15,9 @@ class CreateCourtCasesTable extends Migration
     {
         Schema::create('court_cases', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('cases_initiated')->nullable();
-            $table->unsignedTinyInteger('cases_disposed_off')->nullable()->default(1);
-            $table->unsignedTinyInteger('cases_status')->nullable()->default(1);
+            $table->unsignedBigInteger('case_initiated')->nullable();
+            $table->unsignedBigInteger('case_disposed_off')->nullable();
+            $table->unsignedTinyInteger('case_status')->nullable()->default(1);
             $table->foreignId('user_id')->nullable()->constrained();
             $table->softDeletes();
             $table->timestamps();

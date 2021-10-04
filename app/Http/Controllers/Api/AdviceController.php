@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\AdviceRequest;
 use App\Http\Resources\AdviceResource;
 use App\Models\Advice;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -16,24 +15,26 @@ class AdviceController extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $limit = isset($request->limit) && !empty($request->limit)?$request->limit:30;
-        $serach = isset($request->search) && !empty($request->search)?$request->search:'';
+        $length = request()->get('length', 30);
+        $search = request()->get('search', '');
+        $column = request()->get('column', 'created_at');
+        $dir = request()->get('dir', 'desc');
+
         $query = Advice::with('user');
-        if(!empty($serach)){
-            $serach = str_replace(',', '', $serach);
-            $status= Str::is('ac*', $serach)?1:(Str::is('in*', $serach)?0:$serach);
-            $query->where('advice_issued', 'LIKE', $serach . '%')
-                ->orWhere('advice_pending_3_to_10', 'LIKE', $serach . '%')
-                ->orWhere('advice_pending_more_than_10', 'LIKE', $serach . '%')
-                ->orWhere(DB::raw('DATE_FORMAT(created_at, "%d-%m-%Y")'), 'LIKE', $serach . '%')
+        if(!empty($search)){
+            $search = str_replace(',', '', $search);
+            $status= Str::is('ac*', $search)?1:(Str::is('in*', $search)?0:$search);
+            $query->where('advice_issued', 'LIKE', $search . '%')
+                ->orWhere('advice_pending_3_to_10', 'LIKE', $search . '%')
+                ->orWhere('advice_pending_more_than_10', 'LIKE', $search . '%')
+                ->orWhere(DB::raw('DATE_FORMAT(created_at, "%d-%m-%Y")'), 'LIKE', $search . '%')
                 ->orWhere('advice_status', $status);
         }
 
-        $advices =  $query->latest()->paginate($limit);
-
-        return $this->respond($advices);
+       $data = $query->orderBy($column, $dir)->paginate($length);
+       return AdviceResource::collection($data);
 
     }
 
@@ -46,11 +47,7 @@ class AdviceController extends ApiController
     public function store(AdviceRequest $request)
     {
       $advice = Advice::create($request->all());
-      if($advice){
-          return $this->sendSuccessReponse('Advice has been saved successfully.',$advice);
-      }else{
-          return $this->sendFailResponse('Fail to saved the record.');
-      }
+      return $this->sendSuccessReponse('Advice has been saved successfully.',$advice);
     }
 
     /**
@@ -61,7 +58,7 @@ class AdviceController extends ApiController
      */
     public function show(Advice $advice)
     {
-        return $this->respond(['advice' => new AdviceResource($advice)]);
+        return $this->respond(['row' => new AdviceResource($advice)]);
     }
 
     /**

@@ -5,7 +5,7 @@
                 <!-- BEGIN: Form Validation -->
                 <div class="intro-y box">
                     <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
-                        <h2 class="font-medium text-base mr-auto">Add Advice</h2>
+                        <h2 class="font-medium text-base mr-auto">Edit Advice</h2>
                     </div>
                     <div class="p-5">
                         <div class="preview">
@@ -102,7 +102,7 @@ export default {
     methods: {
         loadAdvice: function (){
             axios.get('/api/v1/advices/' + this.$route.params.id).then(response => {
-                this.form = response.data.advice;
+                this.form = response.data.row;
             }).catch((error)=>{
                 this.processing = false
                 this.$vToastify.error("Record has been not found.");

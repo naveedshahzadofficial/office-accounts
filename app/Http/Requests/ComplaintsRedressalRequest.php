@@ -13,7 +13,7 @@ class ComplaintsRedressalRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class ComplaintsRedressalRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'complaint_disposed' => 'required|integer',
+            'complaint_pending_3_to_10' => 'required|integer',
+            'complaint_pending_more_than_10' => 'required|integer',
+            'complaint_other_3_to_10' => 'required|integer',
+            'complaint_other_more_than_10' => 'required|integer',
+            'complaint_status' => 'required|integer'
         ];
     }
 }

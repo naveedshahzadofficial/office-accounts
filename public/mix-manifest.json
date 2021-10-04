@@ -1,7 +1,7 @@
 {
-    "/js/app.js": "/js/app.js?id=8207838bfd37b74b79f9",
+    "/js/app.js": "/js/app.js?id=d57217272161e6de14aa",
     "/js/about.js": "/js/about.js?id=bf8fa9307e8d5be42abf",
-    "/css/app.css": "/css/app.css?id=24ec69fd6353b7feb4b0",
+    "/css/app.css": "/css/app.css?id=bb49f00804dbd223df94",
     "/images/bg-login-page-dark.svg": "/images/bg-login-page-dark.svg?id=fc0c8410eef58a08ba72",
     "/images/bg-login-page.svg": "/images/bg-login-page.svg?id=c775fc3194f5cb63498a",
     "/images/error-illustration.svg": "/images/error-illustration.svg?id=9d16eebda054057714e3",
@@ -67,5 +67,8 @@
     "/images/profile-7.jpg": "/images/profile-7.jpg?id=170ccfb21d9df10011d7",
     "/images/profile-8.jpg": "/images/profile-8.jpg?id=170ccfb21d9df10011d7",
     "/images/profile-9.jpg": "/images/profile-9.jpg?id=170ccfb21d9df10011d7",
+    "/images/sort_asc.png": "/images/sort_asc.png?id=9fed1fb817a1d6b8b921",
+    "/images/sort_both.png": "/images/sort_both.png?id=bc49bc0e8d14db8eea8c",
+    "/images/sort_desc.png": "/images/sort_desc.png?id=a908a277531a1db2fb2c",
     "/images/woman-illustration.svg": "/images/woman-illustration.svg?id=12c2eabd34fad89bf6ae"
 }

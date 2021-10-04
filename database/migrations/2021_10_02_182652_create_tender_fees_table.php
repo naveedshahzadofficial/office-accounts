@@ -15,6 +15,12 @@ class CreateTenderFeesTable extends Migration
     {
         Schema::create('tender_fees', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('fee_document_examined')->nullable();
+            $table->unsignedBigInteger('fee_violations_identified')->nullable();
+            $table->unsignedBigInteger('fee_verification_deposit')->nullable();
+            $table->unsignedTinyInteger('fee_status')->nullable()->default(1);
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

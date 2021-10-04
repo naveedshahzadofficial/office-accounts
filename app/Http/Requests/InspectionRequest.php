@@ -13,7 +13,7 @@ class InspectionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class InspectionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'inspection_internal_conducted' => 'required|integer',
+            'inspection_verification_entries' => 'required|integer',
+            'inspection_pending_3_to_7' => 'required|integer',
+            'inspection_pending_more_than_7' => 'required|integer',
+            'inspection_miscellaneous_disposed_off' => 'required|integer',
+            'inspection_status' => 'required',
         ];
     }
 }

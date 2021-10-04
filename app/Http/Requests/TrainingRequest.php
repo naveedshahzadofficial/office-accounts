@@ -13,7 +13,7 @@ class TrainingRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class TrainingRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'training_persons_imparted' => 'required|integer',
+            'training_status' => 'required',
         ];
     }
 }

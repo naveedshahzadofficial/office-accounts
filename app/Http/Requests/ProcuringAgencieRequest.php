@@ -13,7 +13,7 @@ class ProcuringAgencieRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class ProcuringAgencieRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'agency_procuring_registered' => 'required|integer',
+            'agency_status' => 'required',
         ];
     }
 }

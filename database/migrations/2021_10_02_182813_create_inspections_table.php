@@ -15,6 +15,14 @@ class CreateInspectionsTable extends Migration
     {
         Schema::create('inspections', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('inspection_internal_conducted')->nullable();
+            $table->unsignedBigInteger('inspection_verification_entries')->nullable();
+            $table->unsignedBigInteger('inspection_pending_3_to_7')->nullable();
+            $table->unsignedBigInteger('inspection_pending_more_than_7')->nullable();
+            $table->unsignedBigInteger('inspection_miscellaneous_disposed_off')->nullable();
+            $table->unsignedTinyInteger('inspection_status')->nullable()->default(1);
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

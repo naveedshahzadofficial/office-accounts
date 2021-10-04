@@ -14,6 +14,15 @@ class TenderFeeResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'fee_document_examined' => $this->fee_document_examined,
+            'fee_violations_identified' => $this->fee_violations_identified,
+            'fee_verification_deposit' => $this->fee_verification_deposit,
+            'fee_status' => $this->fee_status,
+            'user_id' => $this->user_id,
+            'created_at' => $this->created_at ? $this->created_at->format('d-m-Y') : null,
+            'updated_at' => $this->updated_at ? $this->updated_at->format('d-m-Y') : null,
+        ];
     }
 }

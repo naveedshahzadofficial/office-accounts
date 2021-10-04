@@ -15,6 +15,14 @@ class CreateAccountsTable extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('account_issued')->nullable();
+            $table->unsignedBigInteger('account_activated')->nullable();
+            $table->unsignedBigInteger('account_deactivated')->nullable();
+            $table->string('account_deactivated_file')->nullable();
+            $table->unsignedBigInteger('account_blocked_till_date')->nullable();
+            $table->unsignedTinyInteger('account_status')->nullable()->default(1);
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

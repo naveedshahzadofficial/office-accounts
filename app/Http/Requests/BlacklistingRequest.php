@@ -13,7 +13,7 @@ class BlacklistingRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class BlacklistingRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'blacklist_order' => 'required|integer',
+            'blacklisting_case_disposed_off' => 'required|integer',
+            'blacklisting_pending_15_to_30' => 'required|integer',
+            'blacklisting_pending_more_than_30' => 'required|integer',
+            'blacklisting_status' => 'required',
         ];
     }
 }

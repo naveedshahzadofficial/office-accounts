@@ -14,6 +14,13 @@ class ProcuringAgencieResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'agency_procuring_registered' => $this->agency_procuring_registered,
+            'agency_status' => $this->agency_status,
+            'user_id' => $this->user_id,
+            'created_at' => $this->created_at ? $this->created_at->format('d-m-Y') : null,
+            'updated_at' => $this->updated_at ? $this->updated_at->format('d-m-Y') : null,
+        ];
     }
 }

@@ -13,7 +13,7 @@ class ViolationExaminationRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class ViolationExaminationRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'violation_website' => 'required|integer',
+            'violation_newspaper' => 'required|integer',
+            'violation_identified' => 'required|integer',
+            'violation_removed' => 'required|integer',
+            'violation_pending' => 'required|integer',
+            'violation_file' => 'nullable|mimes:xlsx,xls|max:5120',
+            'violation_status' => 'required',
         ];
     }
 }

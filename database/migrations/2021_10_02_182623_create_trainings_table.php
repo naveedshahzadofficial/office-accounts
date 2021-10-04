@@ -15,6 +15,10 @@ class CreateTrainingsTable extends Migration
     {
         Schema::create('trainings', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('training_persons_imparted')->nullable();
+            $table->unsignedTinyInteger('training_status')->nullable()->default(1);
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

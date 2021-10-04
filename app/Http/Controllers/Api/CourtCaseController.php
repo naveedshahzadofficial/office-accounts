@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\CourtCaseRequest;
 use App\Http\Resources\CourtCaseResource;
 use App\Models\CourtCase;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -16,23 +15,25 @@ class CourtCaseController extends ApiController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $limit = isset($request->limit) && !empty($request->limit)?$request->limit:30;
-        $serach = isset($request->search) && !empty($request->search)?$request->search:'';
+        $length = request()->get('length', 30);
+        $search = request()->get('search', '');
+        $column = request()->get('column', 'created_at');
+        $dir = request()->get('dir', 'desc');
+
         $query = CourtCase::with('user');
-        if(!empty($serach)){
-            $serach = str_replace(',', '', $serach);
-            $status= Str::is('ac*', $serach)?1:(Str::is('in*', $serach)?0:$serach);
-            $query->where('cases_initiated', 'LIKE', $serach . '%')
-                ->orWhere('cases_disposed_off', 'LIKE', $serach . '%')
-                ->orWhere(DB::raw('DATE_FORMAT(created_at, "%d-%m-%Y")'), 'LIKE', $serach . '%')
+        if(!empty($search)){
+            $search = str_replace(',', '', $search);
+            $status= Str::is('ac*', $search)?1:(Str::is('in*', $search)?0:$search);
+            $query->where('cases_initiated', 'LIKE', $search . '%')
+                ->orWhere('cases_disposed_off', 'LIKE', $search . '%')
+                ->orWhere(DB::raw('DATE_FORMAT(created_at, "%d-%m-%Y")'), 'LIKE', $search . '%')
                 ->orWhere('cases_status',$status);
         }
 
-        $courtCases =  $query->latest()->paginate($limit);
-
-        return $this->respond($courtCases);
+        $data =  $query->orderBy($column, $dir)->paginate($length);
+        return CourtCaseResource::collection($data);
     }
 
     /**
@@ -55,7 +56,7 @@ class CourtCaseController extends ApiController
      */
     public function show(CourtCase $courtCase)
     {
-        return $this->respond(['court_case' => new CourtCaseResource($courtCase)]);
+        return $this->respond(['row' => new CourtCaseResource($courtCase)]);
     }
 
     /**

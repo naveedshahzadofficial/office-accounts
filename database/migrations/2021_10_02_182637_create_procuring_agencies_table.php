@@ -15,6 +15,10 @@ class CreateProcuringAgenciesTable extends Migration
     {
         Schema::create('procuring_agencies', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('agency_procuring_registered')->nullable();
+            $table->unsignedTinyInteger('agency_status')->nullable()->default(1);
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

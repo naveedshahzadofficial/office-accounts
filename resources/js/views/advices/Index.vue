@@ -24,13 +24,8 @@
                                 <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center">
 
                                     <div class="hidden md:block text-gray-600">
-                                        <select v-model="limit" class="form-select box">
-                                            <option value="30" selected >30</option>
-                                            <option value="50">50</option>
-                                            <option value="100">100</option>
-                                            <option value="200">200</option>
-                                            <option value="500">500</option>
-                                            <option value="1000">1000</option>
+                                        <select v-model="tableData.length" @change="loadCollection()" class="form-select box">
+                                            <option v-for="(records, index) in perPage" :key="index" :value="(records==='All'?'9999999':records)" >{{records}}</option>
                                         </select>
                                     </div>
 
@@ -38,7 +33,7 @@
 
                                     <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                                         <div class="w-56 relative text-gray-700 dark:text-gray-300">
-                                            <input v-model="search" type="text" class="form-control w-56 box pr-10 placeholder-theme-13 border-dark-2" placeholder="Search...">
+                                            <input v-model="tableData.search" @input="loadCollection()" type="text" class="form-control w-56 box pr-10 placeholder-theme-13 border-dark-2" placeholder="Search...">
                                             <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-feather="search"></i>
                                         </div>
                                     </div>
@@ -46,61 +41,34 @@
                                 </div>
 
                                 <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
-                                    <table  class="table">
-                                        <thead>
-                                        <tr class="bg-gray-700 dark:bg-dark-1 text-white">
-                                            <th class="whitespace-nowrap text-center">No. of Advices Issued</th>
-                                            <th colspan="2" class="whitespace-nowrap text-center">No. of Advices Pending</th>
-                                            <th class="whitespace-nowrap text-center">Date</th>
-                                            <th class="whitespace-nowrap text-center">Status</th>
-                                            <th class="whitespace-nowrap text-center">Actions</th>
-                                        </tr>
-                                        <tr class="bg-primary-10 dark:bg-dark-1 text-white">
-                                            <th class="whitespace-nowrap text-center">&nbsp;</th>
-                                            <th class="whitespace-nowrap text-center">From 3 to 10 Days</th>
-                                            <th class="whitespace-nowrap text-center">More than 10 Days</th>
-                                            <th class="whitespace-nowrap text-center">&nbsp;</th>
-                                            <th class="whitespace-nowrap text-center">&nbsp;</th>
-                                            <th class="whitespace-nowrap text-center">&nbsp;</th>
-                                        </tr>
-                                        </thead>
+                                    <BaseTableComponent :columns="columns" :childColumns="childColumns" :sortKey="sortKey" :sortOrders="sortOrders" @sortBy="sortBy">
                                         <tbody>
-                                        <tr v-for="advice in getAdvices.data" :key="advice.id">
-                                            <td class="border-b dark:border-dark-5 text-center">{{ advice.advice_issued | numFormat }}</td>
-                                            <td class="border-b dark:border-dark-5 text-center">{{ advice.advice_pending_3_to_10 | numFormat  }}</td>
-                                            <td class="border-b dark:border-dark-5 text-center">{{ advice.advice_pending_more_than_10 | numFormat  }}</td>
-                                            <td class="border-b dark:border-dark-5 text-center">{{ advice.created_at | formatDate  }}</td>
-                                            <td class="border-b dark:border-dark-5 text-center"><span :class="advice.advice_status?'text-theme-9':'text-theme-6'">{{ advice.advice_status?'Active':'Inactive' }}</span></td>
+                                        <tr class="hover:bg-gray-200" v-for="row in getCollection.data" :key="row.id">
+                                            <td class="border-b dark:border-dark-5 text-center">{{ row.advice_issued | numFormat }}</td>
+                                            <td class="border-b dark:border-dark-5 text-center">{{ row.advice_pending_3_to_10 | numFormat  }}</td>
+                                            <td class="border-b dark:border-dark-5 text-center">{{ row.advice_pending_more_than_10 | numFormat  }}</td>
+                                            <td class="border-b dark:border-dark-5 text-center">{{ row.created_at  }}</td>
+                                            <td class="border-b dark:border-dark-5 text-center"><span :class="row.advice_status?'text-theme-9':'text-theme-6'">{{ row.advice_status?'Active':'Inactive' }}</span></td>
                                             <td class="border-b dark:border-dark-5 text-center">
-                                                <router-link :to="{ name: 'admin.advices.edit', params: { id: advice.id } }">
+                                                <router-link :to="{ name: 'admin.advices.edit', params: { id: row.id } }">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square w-4 h-4 mr-1"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
                                                     Edit
                                                 </router-link>
-                                                <span class="ml-3 text-theme-6 cursor-pointer" @click.prevent="confirmDelete(advice.id)"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 w-4 h-4 mr-1"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                                                <span class="ml-3 text-theme-6 cursor-pointer" @click.prevent="confirmDelete(row.id)"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2 w-4 h-4 mr-1"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
                                                     Delete
                                                 </span>
                                             </td>
                                         </tr>
                                         </tbody>
-                                    </table>
+                                    </BaseTableComponent>
+
                                 </div>
 
-                                <p class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center" v-show="!getAdvices.total > 0">Currently no advice is added.</p>
+                                <p class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center" v-if="getCollection.meta && !getCollection.meta.total">Currently no advice is added.</p>
 
                                 <!-- BEGIN: Pagination -->
-                                <div v-show="getAdvices.total" class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
-                                    <div class="hidden md:block text-gray-600 mt-3 sm:mt-0">Showing {{ getAdvices.from | numFormat }} to {{ getAdvices.to | numFormat }} of {{ getAdvices.total | numFormat }} entries</div>
-                                    <div class="hidden md:block mx-auto text-gray-600"></div>
-                                    <div class="w-full sm:w-auto mt-3 sm:mt-0">
-                                    <pagination :data="getAdvices" @pagination-change-page="loadAdvices">
-                                        <span slot="prev-nav">Previous</span>
-                                        <span slot="next-nav">Next</span>
-                                    </pagination>
-                                    </div>
-
-                                </div>
+                                <PaginationComponent :pagination="pagination" :links="links" @page-change="loadCollection"></PaginationComponent>
                                 <!-- END: Pagination -->
-
 
                              </div>
 
@@ -121,58 +89,93 @@
 
 <script>
 
+import BaseTableComponent from "../../components/BaseTableComponent.vue";
+import PaginationComponent from "../../components/PaginationComponent.vue";
 import DeleteModalComponent from "../../components/DeleteModalComponent.vue";
 
 export default {
-    name: "Index.vue",
-    data: () => ({
-        advices: {},
-        message: '',
-        now: new Date().toISOString(),
-        search: "",
-        page: 1,
-        limit: 30,
-        processing: false,
-        is_show_model: false,
-        delete_id: 0
-    }),
-    watch:{
-        limit:function(val, old){
-            this.loadAdvices();
-        },
-        search(val, old) {
-            if (val.length >= 2 || old.length >= 2) {
-                this.loadAdvices();
-            }
-        },
+    name: "Advices",
+    data(){
+        let sortOrders = {};
+
+        let columns = [
+            { label: 'No. of Advices Issued', name: 'advice_issued', orderable: true },
+            { label: 'No. of Advices Pending', name: null, colspan:2},
+            { label: 'Date', name: 'created_at', orderable: true},
+            { label: 'Status', name: 'advice_status', orderable: true},
+            { label: 'Actions', name: null},
+        ];
+
+        columns.forEach((column) => {
+            if(column.name != null)
+            sortOrders[column.name] = -1;
+        });
+
+        let childColumns = [
+            { label: '', name: null },
+            { label: 'From 3 to 10 Days', name: 'advice_pending_3_to_10', orderable: true },
+            { label: 'More than 10 Days', name: 'advice_pending_more_than_10', orderable: true },
+            { label: '', name: null },
+            { label: '', name: null },
+            { label: '', name: null },
+        ];
+
+        childColumns.forEach((column) => {
+            if(column.name != null)
+                sortOrders[column.name] = -1;
+        });
+
+       return {
+           collection: {},
+           columns: columns,
+           childColumns: childColumns,
+           message: '',
+           now: new Date().toISOString(),
+           perPage: ['30', '50', '100', '200', '500', '1000', 'All'],
+           tableData: {
+               draw: 0,
+               length: 30,
+               search: '',
+               column: 'created_at',
+               dir: 'desc',
+           },
+           sortKey: 'created_at',
+           sortOrders: sortOrders,
+           processing: false,
+           is_show_model: false,
+           delete_id: 0
+       }
     },
     computed:{
         isShowDeleteModel: function (){
             return this.is_show_model;
         },
-        getAdvices: function (){
-            return this.advices;
+        getCollection: function (){
+            return this.collection;
+        },
+        pagination: function(){
+            return this.collection?this.collection.meta:{};
+        },
+        links: function(){
+            return this.collection?this.collection.links:{};
         }
     },
     components: {
+        BaseTableComponent,
+        PaginationComponent,
         DeleteModalComponent
     },
     created() {
-        this.loadAdvices();
+        this.loadCollection();
     },
     methods: {
-        loadAdvices: function(page = this.page){
+        loadCollection: function(url = '/api/v1/advices'){
             this.processing = true;
-            axios
-                .get("/api/v1/advices?page=" + page, {
-                    params: {
-                        limit: this.limit,
-                        search: this.search.length >= 2 ? this.search : "",
-                    },
-                })
+            this.tableData.draw++;
+            axios.get(url, {params: this.tableData })
                 .then((response) => {
-                    this.advices = response.data;
-                    console.log(this.advices);
+                    let data = response.data;
+                    this.collection = data;
                     this.loading = false;
                 }).catch((error)=>{
                 this.processing = false
@@ -187,22 +190,29 @@ export default {
         confirmModel: function (answer){
             this.is_show_model = false;
             if(answer==="Delete"){
-                this.deleteAdvice();
+                this.deleteRecord();
             }
         },
-        deleteAdvice: function (delete_id = this.delete_id){
+        deleteRecord: function (delete_id = this.delete_id){
             this.processing = true;
             axios.delete(`/api/v1/advices/${delete_id}`).then((resp) => {
                     this.$vToastify.success(resp.data.message);
                     this.loading = false;
-                    this.advices.to--;
-                    this.advices.total--;
-                    this.advices.data = this.advices.data.filter((advice) => advice.id !== delete_id );
+                    this.collection.meta.to--;
+                    this.collection.meta.total--;
+                    this.collection.data = this.collection.data.filter((row) => row.id !== delete_id );
                     this.delete_id = 0;
                 }).catch((error)=>{
                 this.processing = false
                 this.$vToastify.error("Record has been not found.");
             });
+        },
+        sortBy: function (key){
+            this.sortKey = key;
+            this.sortOrders[key] = this.sortOrders[key] * -1;
+            this.tableData.column = key;
+            this.tableData.dir = this.sortOrders[key] === 1 ? 'asc' : 'desc';
+            this.loadCollection();
         },
     }
 }
