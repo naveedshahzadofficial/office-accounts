@@ -16,7 +16,7 @@
             <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in" role="button" aria-expanded="false">
                 <img alt="PMS PPRA" :src="userProfileImage">
             </div>
-            <div class="dropdown-menu w-56" :class="{'hide': isLogout}">
+            <div class="dropdown-menu w-56" v-if="!isLogout">
                 <div class="dropdown-menu__content box bg-theme-26 dark:bg-dark-6 text-white">
                     <div class="p-4 border-b border-theme-27 dark:border-dark-3">
                         <div class="font-medium">{{ userProfile.name }}</div>
