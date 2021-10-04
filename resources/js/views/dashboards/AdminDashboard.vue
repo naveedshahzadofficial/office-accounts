@@ -33,30 +33,13 @@
 </template>
 
 <script>
-import {mapActions} from "vuex";
 
 export default {
     name: "AdminDashboard",
-    computed: {
-        authUser() {
-           let user =  this.$store.state.auth.user;
-           if(!user){
-               this.signOut()
-               this.$router.push({name: 'login'});
-           }
-            return user;
-        },
-    },
     mounted(){
         document.body.classList.remove('login');
         document.body.classList.add('main');
-        this.$store.dispatch('auth/login');
     },
-    methods: {
-        ...mapActions({
-            signOut:"auth/logout"
-        }),
-    }
 }
 </script>
 

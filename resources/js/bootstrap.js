@@ -24,9 +24,6 @@ window.axios.defaults.headers.common['Content-Type'] = 'application/json';
 //window.axios.defaults.withCredentials = true;
 window.axios.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("authToken");
 //window.axios.defaults.baseURL = process.env.MIX_BASE_URL || '';
-console.log(process.env.MIX_BASE_URL)
-console.log(process.env.BASE_URL)
-console.log(process.env.MIX_APP_NAME)
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

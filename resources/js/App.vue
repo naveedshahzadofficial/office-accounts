@@ -18,7 +18,7 @@ export default {
     name: "App",
     computed: {
         isAuthPage: function() {
-            return this.$route.name === 'login';
+            return this.$route.name === 'login' || this.$route.name === 'default-login';
         }
     },
     components: {
