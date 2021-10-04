@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,7 @@ class AuthController extends ApiController
         ]);
 
         if(Auth::attempt($request->only('email', 'password'))){
-            $user = Auth::user();
+            $user =  User::with('role')->find(auth()->id());
             $user->api_token =  $user->createToken('barber_app')->plainTextToken;
             return $this->setData($user)->getResponse();
         }
@@ -30,7 +31,8 @@ class AuthController extends ApiController
 
     public function user(Request $request){
         try {
-            return $this->setData(auth()->user())->getResponse();
+            $user =  User::with('role')->find(auth()->id());
+            return $this->setData($user)->getResponse();
         }catch (\Exception $exception){
             return $this->setError(true)
                 ->setStatusCode(400)

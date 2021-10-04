@@ -29,7 +29,6 @@ class AccountRequest extends FormRequest
             'account_deactivated' => 'required|integer',
             'account_deactivated_file' => 'nullable|mimes:xlsx,xls|max:5120',
             'account_blocked_till_date' => 'required|integer',
-            'account_status' => 'required',
         ];
     }
 }

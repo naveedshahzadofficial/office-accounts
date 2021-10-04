@@ -25,7 +25,6 @@ class DocumentVettingRequest extends FormRequest
     {
         return [
             'vetting_documents' => 'required|integer',
-            'vetting_status' => 'required',
         ];
     }
 }

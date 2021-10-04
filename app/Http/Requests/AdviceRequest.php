@@ -27,7 +27,6 @@ class AdviceRequest extends FormRequest
             'advice_issued' => 'required|integer',
             'advice_pending_3_to_10' => 'required|integer',
             'advice_pending_more_than_10' => 'required|integer',
-            'advice_status' => 'required',
         ];
     }
 }

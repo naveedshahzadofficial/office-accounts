@@ -8,9 +8,9 @@
                         <h2 class="font-medium text-base mr-auto">Tender Fee</h2>
 
                         <div class="form-check w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0">
-                            <button class="btn btn-primary shadow-md mr-2" @click.prevent="$router.push({name: 'admin.tender-fees.create'})">
+                            <button class="btn btn-success shadow-md mr-2" @click.prevent="$router.push({name: 'admin.tender-fees.create'})">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus w-4 h-4"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                &nbsp;Add Tender Fee
+                                &nbsp;Add
                             </button>
                         </div>
 
@@ -48,7 +48,6 @@
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.fee_violations_identified | numFormat  }}</td>
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.fee_verification_deposit | numFormat  }}</td>
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.created_at  }}</td>
-                                            <td class="border-b dark:border-dark-5 text-center"><span :class="row.fee_status?'text-theme-9':'text-theme-6'">{{ row.fee_status?'Active':'Inactive' }}</span></td>
                                             <td class="border-b dark:border-dark-5 text-center">
                                                 <router-link :to="{ name: 'admin.tender-fees.edit', params: { id: row.id } }">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square w-4 h-4 mr-1"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
@@ -99,11 +98,10 @@ export default {
         let sortOrders = {};
 
         let columns = [
-            { label: 'No. of Documents Examined for Tender Fee', name: 'fee_document_examined', orderable: true },
-            { label: 'No. of Fee Violations Identified', name: 'fee_violations_identified', orderable: true},
-            { label: 'No. of Verifications for Fee Deposit', name: 'fee_verification_deposit', orderable: true},
+            { label: 'Documents Examined', name: 'fee_document_examined', orderable: true },
+            { label: 'Violations Identified', name: 'fee_violations_identified', orderable: true},
+            { label: 'Verifications for Fee Deposit', name: 'fee_verification_deposit', orderable: true},
             { label: 'Date', name: 'created_at', orderable: true},
-            { label: 'Status', name: 'fee_status', orderable: true},
             { label: 'Actions', name: null},
         ];
 

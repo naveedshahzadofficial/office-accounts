@@ -21,7 +21,7 @@ use App\Http\Controllers\Api\
 
 Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::post('/user',[AuthController::class,'user']);
-    Route::get('/logout',[AuthController::class,'logout']);
+    Route::post('/logout',[AuthController::class,'logout']);
     Route::apiResource('/advices', AdviceController::class);
     Route::apiResource('/court-cases', CourtCaseController::class);
     Route::apiResource('/document-vettings', DocumentVettigController::class);

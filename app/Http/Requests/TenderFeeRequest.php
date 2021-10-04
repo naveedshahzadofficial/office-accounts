@@ -27,7 +27,6 @@ class TenderFeeRequest extends FormRequest
             'fee_document_examined' => 'required|integer',
             'fee_violations_identified' => 'required|integer',
             'fee_verification_deposit' => 'required|integer',
-            'fee_status' => 'required',
         ];
     }
 }

@@ -25,7 +25,6 @@ class DocumentsUploadingRequest extends FormRequest
     {
         return [
             'uploading_documents' => 'required|integer',
-            'uploading_status' => 'required',
         ];
     }
 }

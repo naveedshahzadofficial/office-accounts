@@ -4,15 +4,14 @@
             <!-- BEGIN: Login Info -->
             <div class="hidden xl:flex flex-col min-h-screen">
                 <a href="" class="-intro-x flex items-center pt-5">
-                    <img alt="Rubick Tailwind HTML Admin Template" class="w-6" src="/images/logo.svg">
-                    <span class="text-white text-lg ml-3">
-                        PPRA<span class="font-medium">&nbsp;TASK's</span>
-                    </span>
+                    <img alt="PPRA Logo" src="/images/login-logo.png">
                 </a>
                 <div class="my-auto">
-                    <img alt="Rubick Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="/images/illustration.svg">
-                    <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">A few more clicks to <br> sign in to your account.</div>
-                    <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-gray-500">Manage all your tasks accounts in one place</div>
+                    <img alt="PPRA Middle Logo" class="-intro-x w-1/2 -mt-16" src="/images/login_left_img.png">
+                </div>
+
+                <div class="-intro-x flex items-center pt-5">
+                    <img alt="PITB Logo" src="/images/logo-pitb.png">
                 </div>
             </div>
             <!-- END: Login Info -->

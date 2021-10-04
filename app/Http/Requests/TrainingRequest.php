@@ -25,7 +25,6 @@ class TrainingRequest extends FormRequest
     {
         return [
             'training_persons_imparted' => 'required|integer',
-            'training_status' => 'required',
         ];
     }
 }

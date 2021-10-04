@@ -26,7 +26,6 @@ class CourtCaseRequest extends FormRequest
         return [
             'case_initiated' => 'required|integer',
             'case_disposed_off' => 'required|integer',
-            'case_status' => 'required',
         ];
     }
 }

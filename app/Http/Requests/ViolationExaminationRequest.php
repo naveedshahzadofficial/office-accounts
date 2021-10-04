@@ -30,7 +30,6 @@ class ViolationExaminationRequest extends FormRequest
             'violation_removed' => 'required|integer',
             'violation_pending' => 'required|integer',
             'violation_file' => 'nullable|mimes:xlsx,xls|max:5120',
-            'violation_status' => 'required',
         ];
     }
 }

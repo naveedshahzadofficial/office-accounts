@@ -8,9 +8,9 @@
                         <h2 class="font-medium text-base mr-auto">Blacklisting</h2>
 
                         <div class="form-check w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0">
-                            <button class="btn btn-primary shadow-md mr-2" @click.prevent="$router.push({name: 'admin.blacklistings.create'})">
+                            <button class="btn btn-success shadow-md mr-2" @click.prevent="$router.push({name: 'admin.blacklistings.create'})">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus w-4 h-4"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                &nbsp;Add Blacklisting
+                                &nbsp;Add
                             </button>
                         </div>
 
@@ -49,7 +49,6 @@
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.blacklisting_pending_15_to_30 | numFormat  }}</td>
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.blacklisting_pending_more_than_30 | numFormat  }}</td>
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.created_at  }}</td>
-                                            <td class="border-b dark:border-dark-5 text-center"><span :class="row.blacklisting_status?'text-theme-9':'text-theme-6'">{{ row.blacklisting_status?'Active':'Inactive' }}</span></td>
                                             <td class="border-b dark:border-dark-5 text-center">
                                                 <router-link :to="{ name: 'admin.blacklistings.edit', params: { id: row.id } }">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square w-4 h-4 mr-1"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
@@ -100,11 +99,10 @@ export default {
         let sortOrders = {};
 
         let columns = [
-            { label: 'Uploading of Blacklisting Order', name: 'blacklist_order', orderable: true },
-            { label: 'Blacklisting cases Disposed Off', name: 'blacklisting_case_disposed_off', orderable: true},
-            { label: 'Pending Blacklisting Cases', name: null, colspan:2},
+            { label: 'Uploading Order', name: 'blacklist_order', orderable: true },
+            { label: 'Cases Disposed Off', name: 'blacklisting_case_disposed_off', orderable: true},
+            { label: 'Pending Cases', name: null, colspan:2},
             { label: 'Date', name: 'created_at', orderable: true},
-            { label: 'Status', name: 'case_status', orderable: true},
             { label: 'Actions', name: null},
         ];
 
@@ -118,7 +116,6 @@ export default {
             { label: '', name: null },
             { label: 'From 15 to 30 Days', name: 'blacklisting_pending_15_to_30', orderable: true },
             { label: 'More than 30 Days', name: 'blacklisting_pending_more_than_30', orderable: true },
-            { label: '', name: null },
             { label: '', name: null },
             { label: '', name: null },
         ];

@@ -8,9 +8,9 @@
                         <h2 class="font-medium text-base mr-auto">Complaints Redressal</h2>
 
                         <div class="form-check w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0">
-                            <button class="btn btn-primary shadow-md mr-2" @click.prevent="$router.push({name: 'admin.complaints-redressals.create'})">
+                            <button class="btn btn-success shadow-md mr-2" @click.prevent="$router.push({name: 'admin.complaints-redressals.create'})">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus w-4 h-4"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                                &nbsp;Add Complaints Redressal
+                                &nbsp;Add
                             </button>
                         </div>
 
@@ -50,7 +50,6 @@
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.complaint_other_3_to_10 | numFormat  }}</td>
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.complaint_other_more_than_10 | numFormat  }}</td>
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.created_at  }}</td>
-                                            <td class="border-b dark:border-dark-5 text-center"><span :class="row.complaint_status?'text-theme-9':'text-theme-6'">{{ row.complaint_status?'Active':'Inactive' }}</span></td>
                                             <td class="border-b dark:border-dark-5 text-center">
                                                 <router-link :to="{ name: 'admin.complaints-redressals.edit', params: { id: row.id } }">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square w-4 h-4 mr-1"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
@@ -101,11 +100,10 @@ export default {
         let sortOrders = {};
 
         let columns = [
-            { label: 'No. of Complaints Disposed (Online)', name: 'complaint_disposed', orderable: true },
-            { label: 'No. of Complaints Pending (Online)', name: null, colspan:2},
-            { label: 'No. of Other Complaints', name: null, colspan:2},
+            { label: 'Complaints Disposed (Online)', name: 'complaint_disposed', orderable: true },
+            { label: 'Complaints Pending (Online)', name: null, colspan:2},
+            { label: 'Other Complaints', name: null, colspan:2},
             { label: 'Date', name: 'created_at', orderable: true},
-            { label: 'Status', name: 'complaint_status', orderable: true},
             { label: 'Actions', name: null},
         ];
 
@@ -120,7 +118,6 @@ export default {
             { label: 'More than 10 Days', name: 'complaint_pending_more_than_10', orderable: true },
             { label: 'From 3 to 10 Days', name: 'complaint_other_3_to_10', orderable: true },
             { label: 'More than 10 Days', name: 'complaint_other_more_than_10', orderable: true },
-            { label: '', name: null },
             { label: '', name: null },
             { label: '', name: null },
         ];

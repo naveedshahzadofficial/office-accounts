@@ -25,7 +25,6 @@ class ProcuringAgencieRequest extends FormRequest
     {
         return [
             'agency_procuring_registered' => 'required|integer',
-            'agency_status' => 'required',
         ];
     }
 }
