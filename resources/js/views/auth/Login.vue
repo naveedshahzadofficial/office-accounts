@@ -76,13 +76,12 @@ export default {
         }),
         login: async function () {
             this.processing= true
-            await axios.get('/sanctum/csrf-cookie')
             await axios.post('/api/v1/login', this.form).then((resp) => {
                 if(resp.data.error){
                     this.message = resp.data.message;
                 }else {
-                    localStorage.setItem('authToken', resp.data.api_token);
                     this.signIn()
+                    localStorage.setItem('authToken', resp.data.api_token);
                     this.$router.push({name: 'admin.dashboard'});
                 }
             }).catch((error)=>{

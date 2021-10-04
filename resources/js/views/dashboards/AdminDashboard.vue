@@ -50,6 +50,7 @@ export default {
     mounted(){
         document.body.classList.remove('login');
         document.body.classList.add('main');
+        this.$store.dispatch('auth/login');
     },
     methods: {
         ...mapActions({

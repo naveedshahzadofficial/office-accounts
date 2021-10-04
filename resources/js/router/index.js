@@ -59,8 +59,8 @@ Vue.use(VueRouter)
 const routes = [
     {
         path: '/',
-        name: 'home',
-        component: Home,
+        name: 'default-login',
+        component: Login,
         meta:{
             middleware:"guest",
             title: 'Home'
