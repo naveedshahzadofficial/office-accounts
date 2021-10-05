@@ -26,8 +26,8 @@
                             {{ message }} </div>
 
                         <form id="login-form">
-                            <input id="email" v-model="form.email" type="email" class="intro-x login__input form-control py-3 px-4 border-gray-300 block" placeholder="Email" value="">
-                            <div id="error-email" class="login__input-error w-5/6 text-theme-6 mt-2" v-if="errors.email">{{ errors.email[0] }}</div>
+                            <input id="username" v-model="form.username" type="text" class="intro-x login__input form-control py-3 px-4 border-gray-300 block" placeholder="Username or Email" value="">
+                            <div id="error-username" class="login__input-error w-5/6 text-theme-6 mt-2" v-if="errors.username">{{ errors.username[0] }}</div>
                             <input id="password" v-model="form.password"  type="password" class="intro-x login__input form-control py-3 px-4 border-gray-300 block mt-4" placeholder="Password" value="">
                             <div id="error-password" class="login__input-error w-5/6 text-theme-6 mt-2" v-if="errors.password">{{ errors.password[0] }}</div>
                         </form>
@@ -59,7 +59,7 @@ export default {
     name: "Login",
     data: () => ({
         form:{
-            email: '',
+            username: '',
             password: ''
         },
         errors: [],

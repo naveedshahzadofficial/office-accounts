@@ -11,11 +11,13 @@ class AuthController extends ApiController
 
     public function login(Request $request){
         $request->validate([
-           'email' => 'required|email',
+            'username' => 'required',
             'password'=> 'required'
         ]);
 
-        if(Auth::attempt($request->only('email', 'password'))){
+        $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        if(Auth::attempt( array($fieldType => $request->username, 'password' => $request->password))){
             $user =  User::with('role')->find(auth()->id());
             $user->api_token =  $user->createToken('barber_app')->plainTextToken;
             return $this->setData($user)->getResponse();
