@@ -42,9 +42,6 @@
                     <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
                         <button id="btn-login" class="btn btn-success py-3 px-4 w-full xl:w-32 xl:mr-3 align-top" @click.prevent="login">Login</button>
                     </div>
-                    <div class="intro-x mt-10 xl:mt-24 text-gray-700 dark:text-gray-600 text-center xl:text-left">
-                        By signin up, you agree to our <br> <a class="text-theme-1 dark:text-theme-10" href="">Terms and Conditions</a> & <a class="text-theme-1 dark:text-theme-10" href="">Privacy Policy</a>
-                    </div>
                 </div>
             </div>
             <!-- END: Login Form -->
