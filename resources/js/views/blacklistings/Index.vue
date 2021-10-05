@@ -196,7 +196,7 @@ export default {
         },
         deleteRecord: function (delete_id = this.delete_id){
             this.processing = true;
-            axios.delete(`/api/v1/blacklistings/${delete_id}`).then((resp) => {
+            axios.post(`/api/v1/blacklistings/${delete_id}`, { _method : 'DELETE' }).then((resp) => {
                     this.$vToastify.success(resp.data.message);
                     this.loading = false;
                     this.collection.meta.to--;

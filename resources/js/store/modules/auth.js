@@ -39,6 +39,7 @@ const actions = {
             commit('SET_USER', {})
             commit('SET_AUTHENTICATED', false)
             localStorage.removeItem("authToken");
+            window.location.replace('/')
         })
     }
 }

@@ -16,7 +16,7 @@
             <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in" role="button" aria-expanded="false">
                 <img alt="PMS PPRA" :src="userProfileImage">
             </div>
-            <div class="dropdown-menu w-56" v-if="!isLogout">
+            <div class="dropdown-menu w-56">
                 <div class="dropdown-menu__content box bg-theme-26 dark:bg-dark-6 text-white">
                     <div class="p-4 border-b border-theme-27 dark:border-dark-3">
                         <div class="font-medium">{{ userProfile.name }}</div>
@@ -43,9 +43,7 @@ export default {
     props: {
         breadcrumbs: []
     },
-    data: () => ({
-        isLogout: false,
-    }),
+    data: () => ({}),
     computed:{
         userProfileImage(){
             return process.env.MIX_BASE_URL+"/images/profile-6.jpg";
@@ -54,7 +52,6 @@ export default {
             let user =  this.$store.state.auth.user;
             if(!user){
                 this.signOut()
-                this.isLogout = true;
                 this.$router.push({name: 'login'});
             }
             return user;
@@ -69,8 +66,7 @@ export default {
         }),
         logout: function (){
             this.signOut();
-            this.isLogout = true;
-            this.$router.push({name: 'login'});
+            //this.$router.push({name: 'login'});
         }
     }
 }

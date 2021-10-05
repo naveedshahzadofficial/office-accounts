@@ -55,6 +55,7 @@ export default {
         loadData: function (){
             axios.get('/api/v1/document-vettings/' + this.$route.params.id).then(response => {
                 this.form = response.data.row;
+                this.form['_method'] = 'PUT';
             }).catch((error)=>{
                 this.processing = false
                 this.$vToastify.error("Record has been not found.");
@@ -63,7 +64,7 @@ export default {
         },
         updateForm: function (){
             this.processing = true;
-            axios.put(`/api/v1/document-vettings/${this.$route.params.id}`, this.form).then((resp) => {
+            axios.post(`/api/v1/document-vettings/${this.$route.params.id}`, this.form).then((resp) => {
                 this.processing = false
                 if(resp.data.error){
                     this.message = resp.data.message;

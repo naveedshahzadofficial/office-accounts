@@ -8,7 +8,7 @@
                         <i data-feather="radio" class="report-box__icon text-theme-10"></i>
                     </div>
                     <div class="text-3xl font-medium leading-8 mt-6">0</div>
-                    <div class="text-base text-gray-600 mt-1">Advices</div>
+                    <div class="text-base text-gray-600 mt-1">&nbsp</div>
                 </div>
             </div>
         </div>
@@ -21,7 +21,7 @@
               <i data-feather="radio" class="report-box__icon text-theme-11"></i>
             </div>
             <div class="text-3xl font-medium leading-8 mt-6">0</div>
-            <div class="text-base text-gray-600 mt-1">Court Cases</div>
+            <div class="text-base text-gray-600 mt-1">&nbsp</div>
           </div>
         </div>
       </div>
