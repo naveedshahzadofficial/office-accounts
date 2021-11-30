@@ -24,6 +24,8 @@ class TenderFeeController extends ApiController
             $query->where('fee_document_examined', 'LIKE', $search . '%')
                 ->orWhere('fee_violations_identified', 'LIKE', $search . '%')
                 ->orWhere('fee_verification_deposit', 'LIKE', $search . '%')
+                ->orWhere('fee_login_ids_activated', 'LIKE', $search . '%')
+                ->orWhere('fee_login_ids_deactivated', 'LIKE', $search . '%')
                 ->orWhere(DB::raw('DATE_FORMAT(created_at, "%d-%m-%Y")'), 'LIKE', $search . '%')
                 ->orWhere('fee_status',$status);
         }

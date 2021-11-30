@@ -13,7 +13,9 @@
                                 {{ message }} </div>
                             <!-- BEGIN: Validation Form -->
                             <form class="validate-form lg:w-1/2">
-
+                                <!-- BEGIN: FormDate -->
+                                <FormDateComponent :created_at="form.created_at"  ></FormDateComponent>
+                                <!-- END: FormDate -->
                                 <div class="input-form" :class="{'has-error':(errors && errors.inspection_internal_conducted)}">
                                     <label class="form-label w-full flex flex-col sm:flex-row">
                                         No. of Internal Inspections Conducted <span class="text-primary-3">*</span>
@@ -85,8 +87,12 @@
 
 
 <script>
+import moment from "moment";
+import FormDateComponent from "../../components/FormDate";
+
 export default {
     name: "InspectionCreate",
+    components: {FormDateComponent},
     data: () => ({
         form:{
             inspection_internal_conducted: '',
@@ -94,6 +100,7 @@ export default {
             inspection_pending_3_to_7: '',
             inspection_pending_more_than_7: '',
             inspection_miscellaneous_disposed_off: '',
+            created_at: moment(new Date()).format('DD-MM-YYYY'),
         },
         errors: [],
         processing: false,

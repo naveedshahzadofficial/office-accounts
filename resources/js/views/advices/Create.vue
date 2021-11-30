@@ -13,6 +13,9 @@
                                 {{ message }} </div>
                             <!-- BEGIN: Validation Form -->
                             <form class="validate-form lg:w-1/2">
+                                <!-- BEGIN: FormDate -->
+                                <FormDateComponent :created_at="form.created_at"  ></FormDateComponent>
+                                <!-- END: FormDate -->
                                 <div class="input-form" :class="{'has-error':(errors && errors.advice_issued)}">
                                     <label class="form-label w-full flex flex-col sm:flex-row">
                                         No. of Advices Issued <span class="text-primary-3">*</span>
@@ -65,13 +68,18 @@
 
 
 <script>
+import moment from "moment";
+import FormDateComponent from "../../components/FormDate";
+
 export default {
     name: "AdviceCreate",
+    components: {FormDateComponent},
     data: () => ({
         form:{
             advice_issued: '',
             advice_pending_3_to_10: '',
             advice_pending_more_than_10: '',
+            created_at: moment(new Date()).format('DD-MM-YYYY'),
         },
         errors: [],
         processing: false,

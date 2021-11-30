@@ -13,14 +13,42 @@
                                 {{ message }} </div>
                             <!-- BEGIN: Validation Form -->
                             <form class="validate-form lg:w-1/2">
-
-                                <div class="input-form" :class="{'has-error':(errors && errors.agency_procuring_registered)}">
+                                <!-- BEGIN: FormDate -->
+                                <FormDateComponent :created_at="form.created_at"  ></FormDateComponent>
+                                <!-- END: FormDate -->
+                                <div class="input-form mt-5" :class="{'has-error':(errors && errors.agency_procuring_registered)}">
                                     <label class="form-label w-full flex flex-col sm:flex-row">
                                         Total No. of Procuring Agencies Registered <span class="text-primary-3">*</span>
                                     </label>
                                     <vue-numeric   placeholder="Procuring agencies Registered"  separator="," class="form-control" v-model="form.agency_procuring_registered" required></vue-numeric>
                                     <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.agency_procuring_registered">
                                         {{  errors.agency_procuring_registered[0] }}</div>
+                                </div>
+
+                                <div class="input-form mt-5" :class="{'has-error':(errors && errors.public_sector_organization_59e_registered)}">
+                                    <label class="form-label w-full flex flex-col sm:flex-row">
+                                        Total No. of Public Sector Organizations (Rule 59-e) Registered <span class="text-primary-3">*</span>
+                                    </label>
+                                    <vue-numeric   placeholder="Procuring agencies Registered"  separator="," class="form-control" v-model="form.public_sector_organization_59e_registered" required></vue-numeric>
+                                    <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.public_sector_organization_59e_registered">
+                                        {{  errors.public_sector_organization_59e_registered[0] }}</div>
+                                </div>
+
+                                <div class="input-form mt-5" :class="{'has-error':(errors && errors.suppliers_registered)}">
+                                    <label class="form-label w-full flex flex-col sm:flex-row">
+                                        Total No. of Suppliers Registered <span class="text-primary-3">*</span>
+                                    </label>
+                                    <vue-numeric   placeholder="Procuring agencies Registered"  separator="," class="form-control" v-model="form.suppliers_registered" required></vue-numeric>
+                                    <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.suppliers_registered">
+                                        {{  errors.suppliers_registered[0] }}</div>
+                                </div>
+                                <div class="input-form mt-5" :class="{'has-error':(errors && errors.psmu_registered)}">
+                                    <label class="form-label w-full flex flex-col sm:flex-row">
+                                        Total No. of PSMU Registered <span class="text-primary-3">*</span>
+                                    </label>
+                                    <vue-numeric   placeholder="Procuring agencies Registered"  separator="," class="form-control" v-model="form.psmu_registered" required></vue-numeric>
+                                    <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.psmu_registered">
+                                        {{  errors.psmu_registered[0] }}</div>
                                 </div>
 
 
@@ -42,11 +70,19 @@
 
 
 <script>
+import moment from "moment";
+import FormDateComponent from "../../components/FormDate";
+
 export default {
     name: "ProcuringAgencyCreate",
+    components: {FormDateComponent},
     data: () => ({
         form:{
             agency_procuring_registered: '',
+            public_sector_organization_59e_registered: '',
+            suppliers_registered: '',
+            psmu_registered: '',
+            created_at: moment(new Date()).format('DD-MM-YYYY'),
         },
         errors: [],
         processing: false,

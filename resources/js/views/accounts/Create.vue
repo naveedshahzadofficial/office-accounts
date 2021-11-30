@@ -13,7 +13,9 @@
                                 {{ message }} </div>
                             <!-- BEGIN: Validation Form -->
                             <form class="validate-form lg:w-1/2">
-
+                                <!-- BEGIN: FormDate -->
+                                <FormDateComponent :created_at="form.created_at"  ></FormDateComponent>
+                                <!-- END: FormDate -->
                                 <div class="input-form" :class="{'has-error':(errors && errors.case_initiated)}">
                                     <label class="form-label w-full flex flex-col sm:flex-row">
                                         Issued <span class="text-primary-3">*</span>
@@ -67,8 +69,12 @@
 
 
 <script>
+import FormDateComponent from "../../components/FormDate";
+import moment from "moment";
+
 export default {
     name: "AccountCreate",
+    components: {FormDateComponent},
     data: () => ({
         form:{
             account_issued: '',
@@ -76,6 +82,7 @@ export default {
             account_deactivated: '',
             account_deactivated_file: '',
             account_blocked_till_date: '',
+            created_at: moment(new Date()).format('DD-MM-YYYY'),
         },
         errors: [],
         processing: false,

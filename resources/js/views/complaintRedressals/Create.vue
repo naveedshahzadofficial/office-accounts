@@ -13,7 +13,9 @@
                                 {{ message }} </div>
                             <!-- BEGIN: Validation Form -->
                             <form class="validate-form lg:w-1/2">
-
+                                <!-- BEGIN: FormDate -->
+                                <FormDateComponent :created_at="form.created_at"  ></FormDateComponent>
+                                <!-- END: FormDate -->
                                 <div class="input-form" :class="{'has-error':(errors && errors.complaint_disposed)}">
                                     <label class="form-label w-full flex flex-col sm:flex-row">
                                         No. of Complaints Disposed (Online) <span class="text-primary-3">*</span>
@@ -64,14 +66,19 @@
 
 
 <script>
+import moment from "moment";
+import FormDateComponent from "../../components/FormDate";
+
 export default {
     name: "ComplaintRedressalCreate",
+    components: {FormDateComponent},
     data: () => ({
         form:{
             complaint_disposed: '',
             complaint_pending_more_than_7: '',
             complaint_total_other_more_than_7: '',
             complaint_pending_other_more_than_7: '',
+            created_at: moment(new Date()).format('DD-MM-YYYY'),
         },
         errors: [],
         processing: false,

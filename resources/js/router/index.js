@@ -276,7 +276,7 @@ const routes = [
         }
     },
     {
-        path: '/admin/procuring-agencies',
+        path: '/admin/registrations',
         name: 'admin.procuring-agencies.index',
         component: procuringAgency,
         meta:{
@@ -285,7 +285,7 @@ const routes = [
         }
     },
     {
-        path: '/admin/procuring-agencies/create',
+        path: '/admin/registrations/create',
         name: 'admin.procuring-agencies.create',
         component: procuringAgencyCreate,
         meta:{
@@ -294,7 +294,7 @@ const routes = [
         }
     },
     {
-        path: "/admin/procuring-agencies/edit/:id",
+        path: "/admin/registrations/edit/:id",
         name: "admin.procuring-agencies.edit",
         component: procuringAgencyEdit,
         meta:{

@@ -13,7 +13,9 @@
                                 {{ message }} </div>
                             <!-- BEGIN: Validation Form -->
                             <form class="validate-form lg:w-1/2">
-
+                                <!-- BEGIN: FormDate -->
+                                <FormDateComponent v-if="form.created_at" :created_at="form.created_at"  ></FormDateComponent>
+                                <!-- END: FormDate -->
                                 <div class="input-form" :class="{'has-error':(errors && errors.uploading_documents)}">
                                     <label class="form-label w-full flex flex-col sm:flex-row">
                                         No. of Uploaded Documents <span class="text-primary-3">*</span>
@@ -41,11 +43,15 @@
 </template>
 
 <script>
+import FormDateComponent from "../../components/FormDate";
+
 export default {
     name: "DocumentUploadingEdit",
+    components: {FormDateComponent},
     data: () => ({
         form:{
             uploading_documents: '',
+            created_at: '',
         },
         errors: [],
         processing: false,

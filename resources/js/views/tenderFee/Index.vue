@@ -47,6 +47,8 @@
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.fee_document_examined | numFormat }}</td>
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.fee_violations_identified | numFormat  }}</td>
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.fee_verification_deposit | numFormat  }}</td>
+                                            <td class="border-b dark:border-dark-5 text-center">{{ row.fee_login_ids_activated | numFormat  }}</td>
+                                            <td class="border-b dark:border-dark-5 text-center">{{ row.fee_login_ids_deactivated | numFormat  }}</td>
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.created_at  }}</td>
                                             <td class="border-b dark:border-dark-5 text-center">
                                                 <router-link :to="{ name: 'admin.tender-fees.edit', params: { id: row.id } }">
@@ -101,6 +103,8 @@ export default {
             { label: 'Documents Examined', name: 'fee_document_examined', orderable: true },
             { label: 'Violations Identified', name: 'fee_violations_identified', orderable: true},
             { label: 'Verifications for Fee Deposit', name: 'fee_verification_deposit', orderable: true},
+            { label: 'No. of Login IDs Activated', name: 'fee_login_ids_activated', orderable: true},
+            { label: 'No. of Login IDs De-activated', name: 'fee_login_ids_deactivated', orderable: true},
             { label: 'Date', name: 'created_at', orderable: true},
             { label: 'Actions', name: null},
         ];

@@ -17,6 +17,9 @@ class ProcuringAgencieResource extends JsonResource
         return [
             'id' => $this->id,
             'agency_procuring_registered' => $this->agency_procuring_registered,
+            'public_sector_organization_59e_registered' => $this->public_sector_organization_59e_registered,
+            'suppliers_registered' => $this->suppliers_registered,
+            'psmu_registered' => $this->psmu_registered,
             'agency_status' => $this->agency_status,
             'user_id' => $this->user_id,
             'created_at' => $this->created_at ? $this->created_at->format('d-m-Y') : null,

@@ -5,7 +5,7 @@
                 <!-- BEGIN: Form Validation -->
                 <div class="intro-y box">
                     <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
-                        <h2 class="font-medium text-base mr-auto">Procuring Agencies</h2>
+                        <h2 class="font-medium text-base mr-auto">Registrations</h2>
 
                         <div class="form-check w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0">
                             <button class="btn btn-success shadow-md mr-2" @click.prevent="$router.push({name: 'admin.procuring-agencies.create'})">
@@ -40,11 +40,14 @@
 
                                 </div>
 
-                                <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+                                <div class="intro-y col-span-12 overflow-auto ">
                                     <BaseTableComponent :columns="columns" :sortKey="sortKey" :sortOrders="sortOrders" @sortBy="sortBy">
                                         <tbody>
                                         <tr class="hover:bg-gray-200" v-for="row in getCollection.data" :key="row.id">
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.agency_procuring_registered | numFormat }}</td>
+                                            <td class="border-b dark:border-dark-5 text-center">{{ row.public_sector_organization_59e_registered | numFormat }}</td>
+                                            <td class="border-b dark:border-dark-5 text-center">{{ row.suppliers_registered | numFormat }}</td>
+                                            <td class="border-b dark:border-dark-5 text-center">{{ row.psmu_registered | numFormat }}</td>
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.created_at  }}</td>
                                             <td class="border-b dark:border-dark-5 text-center">
                                                 <router-link :to="{ name: 'admin.procuring-agencies.edit', params: { id: row.id } }">
@@ -97,6 +100,9 @@ export default {
 
         let columns = [
             { label: 'Total Procuring Agencies Registered', name: 'agency_procuring_registered', orderable: true },
+            { label: 'Total Public Sector Organizations (Rule 59-e) Registered', name: 'public_sector_organization_59e_registered', orderable: true },
+            { label: 'Total Suppliers Registered', name: 'suppliers_registered', orderable: true },
+            { label: 'Total PSMU Registered', name: 'psmu_registered', orderable: true },
             { label: 'Date', name: 'created_at', orderable: true},
             { label: 'Actions', name: null},
         ];

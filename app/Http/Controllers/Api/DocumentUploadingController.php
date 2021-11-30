@@ -43,9 +43,9 @@ class DocumentUploadingController extends ApiController
         return $this->respond(['row' => new DocumentsUploadingResource($documentsUploading)]);
     }
 
-    public function update(DocumentsUploadingRequest $request, DocumentsUploading $documentUploading)
+    public function update(DocumentsUploadingRequest $request, DocumentsUploading $documentsUploading)
     {
-        $documentUploading->update($request->all());
+        $documentsUploading->update($request->all());
         return $this->setStatusCode(201)->sendSuccessReponse('Document Uploading has been updated successfully.');
     }
 

@@ -13,7 +13,9 @@
                                 {{ message }} </div>
                             <!-- BEGIN: Validation Form -->
                             <form class="validate-form lg:w-1/2">
-
+                                <!-- BEGIN: FormDate -->
+                                <FormDateComponent :created_at="form.created_at"  ></FormDateComponent>
+                                <!-- END: FormDate -->
                                 <div class="input-form" :class="{'has-error':(errors && errors.blacklist_order)}">
                                     <label class="form-label w-full flex flex-col sm:flex-row">
                                         Uploading of Blacklisting Order <span class="text-primary-3">*</span>
@@ -76,14 +78,19 @@
 
 
 <script>
+import FormDateComponent from "../../components/FormDate";
+import moment from "moment";
+
 export default {
     name: "BlacklistingCreate",
+    components: {FormDateComponent},
     data: () => ({
         form:{
             blacklist_order: '',
             blacklisting_case_disposed_off: '',
             blacklisting_pending_15_to_30: '',
             blacklisting_pending_more_than_30: '',
+            created_at: moment(new Date()).format('DD-MM-YYYY'),
         },
         errors: [],
         processing: false,

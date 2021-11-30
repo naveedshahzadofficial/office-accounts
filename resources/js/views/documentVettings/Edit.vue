@@ -13,6 +13,9 @@
                                 {{ message }} </div>
                             <!-- BEGIN: Validation Form -->
                             <form class="validate-form lg:w-1/2">
+                                <!-- BEGIN: FormDate -->
+                                <FormDateComponent v-if="form.created_at" :created_at="form.created_at"  ></FormDateComponent>
+                                <!-- END: FormDate -->
                                 <div class="input-form" :class="{'has-error':(errors && errors.vetting_documents)}">
                                     <label class="form-label w-full flex flex-col sm:flex-row">
                                         No. of Document Vetted <span class="text-primary-3">*</span>
@@ -38,11 +41,15 @@
 </template>
 
 <script>
+import FormDateComponent from "../../components/FormDate";
+
 export default {
     name: "DocumentVettingEdit",
+    components: {FormDateComponent},
     data: () => ({
         form:{
             vetting_documents: '',
+            created_at: '',
         },
         errors: [],
         processing: false,

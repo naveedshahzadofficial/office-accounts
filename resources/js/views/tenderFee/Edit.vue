@@ -13,6 +13,9 @@
                                 {{ message }} </div>
                             <!-- BEGIN: Validation Form -->
                             <form class="validate-form lg:w-1/2">
+                                <!-- BEGIN: FormDate -->
+                                <FormDateComponent v-if="form.created_at" :created_at="form.created_at"  ></FormDateComponent>
+                                <!-- END: FormDate -->
                                 <div class="input-form" :class="{'has-error':(errors && errors.fee_document_examined)}">
                                     <label class="form-label w-full flex flex-col sm:flex-row">
                                         No. of Documents Examined for Tender Fee <span class="text-primary-3">*</span>
@@ -40,6 +43,23 @@
                                         {{  errors.fee_verification_deposit[0] }}</div>
                                 </div>
 
+                                <div class="input-form mt-5" :class="{'has-error':(errors && errors.fee_login_ids_activated)}">
+                                    <label class="form-label w-full flex flex-col sm:flex-row">
+                                        No. of Login IDs Activated <span class="text-primary-3">*</span>
+                                    </label>
+                                    <vue-numeric   placeholder="Fee Violations Identified"  separator="," class="form-control" v-model="form.fee_login_ids_activated" required></vue-numeric>
+                                    <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.fee_login_ids_activated">
+                                        {{  errors.fee_login_ids_activated[0] }}</div>
+                                </div>
+
+                                <div class="input-form mt-5" :class="{'has-error':(errors && errors.fee_login_ids_deactivated)}">
+                                    <label class="form-label w-full flex flex-col sm:flex-row">
+                                        No. of Login IDs De-activated <span class="text-primary-3">*</span>
+                                    </label>
+                                    <vue-numeric   placeholder="Verifications for Fee Deposit"  separator="," class="form-control" v-model="form.fee_login_ids_deactivated" required></vue-numeric>
+                                    <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.fee_login_ids_deactivated">
+                                        {{  errors.fee_login_ids_deactivated[0] }}</div>
+                                </div>
 
                                 <button type="button" class="btn btn-success mt-5 mr-3" @click.prevent="updateForm">Update <i v-if="processing" data-loading-icon="spinning-circles" data-color="white" class="w-4 h-4 ml-2"></i></button>
                                 <button type="button" class="btn btn-secondary mt-5" @click.prevent="$router.push({name: 'admin.tender-fees.index'})">Cancel</button>
@@ -56,13 +76,19 @@
 </template>
 
 <script>
+import FormDateComponent from "../../components/FormDate";
+
 export default {
     name: "TenderFeeEdit",
+    components: {FormDateComponent},
     data: () => ({
         form:{
             fee_document_examined: '',
             fee_violations_identified: '',
             fee_verification_deposit: '',
+            fee_login_ids_activated: '',
+            fee_login_ids_deactivated: '',
+            created_at: '',
         },
         errors: [],
         processing: false,

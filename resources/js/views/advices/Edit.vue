@@ -13,6 +13,9 @@
                                 {{ message }} </div>
                             <!-- BEGIN: Validation Form -->
                             <form class="validate-form lg:w-1/2">
+                                <!-- BEGIN: FormDate -->
+                                <FormDateComponent v-if="form.created_at" :created_at="form.created_at"  ></FormDateComponent>
+                                <!-- END: FormDate -->
                                 <div class="input-form" :class="{'has-error':(errors && errors.advice_issued)}">
                                     <label class="form-label w-full flex flex-col sm:flex-row">
                                         No. of Advices Issued <span class="text-primary-3">*</span>
@@ -64,8 +67,11 @@
 </template>
 
 <script>
+import FormDateComponent from "../../components/FormDate";
+
 export default {
     name: "AdviceEdit",
+    components: {FormDateComponent},
     data: () => ({
         form:{
             advice_issued: '',
