@@ -23,61 +23,29 @@
                                         {{  errors.complaint_disposed[0] }}</div>
                                 </div>
 
-
-                                <div class="input-form mt-5">
-                                    <label class="form-label w-full flex flex-col sm:flex-row font-bold">
-                                        No. of Complaints Pending (Online)
+                                <div class="input-form mt-5" :class="{'has-error':(errors && errors.complaint_pending_more_than_7)}">
+                                    <label class="form-label w-full flex flex-col sm:flex-row">
+                                        No. of Complaints Pending (Online) <span class="text-primary-3">*</span>
                                     </label>
-                                </div>
-                                <div class="grid grid-cols-12 gap-6">
-                                    <div class="col-span-12 lg:col-span-6">
-                                        <div class="input-form" :class="{'has-error':(errors && errors.complaint_pending_3_to_10)}">
-                                            <label class="form-label w-full flex flex-col sm:flex-row">
-                                                From 3 to 10 Days <span class="text-primary-3">*</span>
-                                            </label>
-                                            <vue-numeric   placeholder="From 3 to 10 Days Complaints Pending"  separator="," class="form-control" v-model="form.complaint_pending_3_to_10" required></vue-numeric>
-                                            <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.complaint_pending_3_to_10">{{ errors.complaint_pending_3_to_10[0] }}</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-span-12 lg:col-span-6">
-                                        <div class="input-form" :class="{'has-error':(errors && errors.complaint_pending_more_than_10)}">
-                                            <label class="form-label w-full flex flex-col sm:flex-row">
-                                                More than 10 Days <span class="text-primary-3">*</span>
-                                            </label>
-                                            <vue-numeric   placeholder="More than 10 Days Complaints Pending"  separator="," class="form-control" v-model="form.complaint_pending_more_than_10" required></vue-numeric>
-                                            <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.complaint_pending_more_than_10">{{ errors.complaint_pending_more_than_10[0] }}</div>
-                                        </div>
-                                    </div>
+                                    <vue-numeric   placeholder="More than 7 Days"  separator="," class="form-control" v-model="form.complaint_pending_more_than_7" required></vue-numeric>
+                                    <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.complaint_pending_more_than_7">{{ errors.complaint_pending_more_than_7[0] }}</div>
                                 </div>
 
-                                <div class="input-form mt-5">
-                                    <label class="form-label w-full flex flex-col sm:flex-row font-bold">
-                                        No. of Other Complaints
+                                <div class="input-form mt-5" :class="{'has-error':(errors && errors.complaint_total_other_more_than_7)}">
+                                    <label class="form-label w-full flex flex-col sm:flex-row">
+                                        Total No. of Other Complaints disposed off <span class="text-primary-3">*</span>
                                     </label>
-                                </div>
-                                <div class="grid grid-cols-12 gap-6">
-                                    <div class="col-span-12 lg:col-span-6">
-                                        <div class="input-form" :class="{'has-error':(errors && errors.complaint_other_3_to_10)}">
-                                            <label class="form-label w-full flex flex-col sm:flex-row">
-                                                From 3 to 10 Days <span class="text-primary-3">*</span>
-                                            </label>
-                                            <vue-numeric   placeholder="From 3 to 10 Days Other Complaints"  separator="," class="form-control" v-model="form.complaint_other_3_to_10" required></vue-numeric>
-                                            <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.complaint_other_3_to_10">{{ errors.complaint_other_3_to_10[0] }}</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-span-12 lg:col-span-6">
-                                        <div class="input-form" :class="{'has-error':(errors && errors.complaint_other_more_than_10)}">
-                                            <label class="form-label w-full flex flex-col sm:flex-row">
-                                                More than 10 Days <span class="text-primary-3">*</span>
-                                            </label>
-                                            <vue-numeric   placeholder="More than 10 Days Other Complaints"  separator="," class="form-control" v-model="form.complaint_other_more_than_10" required></vue-numeric>
-                                            <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.complaint_other_more_than_10">{{ errors.complaint_other_more_than_10[0] }}</div>
-                                        </div>
-                                    </div>
+                                    <vue-numeric   placeholder="Pending Complaints Disposed"  separator="," class="form-control" v-model="form.complaint_total_other_more_than_7" required></vue-numeric>
+                                    <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.complaint_total_other_more_than_7">{{ errors.complaint_total_other_more_than_7[0] }}</div>
                                 </div>
 
-
-
+                                <div class="input-form mt-5" :class="{'has-error':(errors && errors.complaint_pending_other_more_than_7)}">
+                                    <label class="form-label w-full flex flex-col sm:flex-row">
+                                        No. of Other Complaints Pending <span class="text-primary-3">*</span>
+                                    </label>
+                                    <vue-numeric   placeholder="More than 7 Days"  separator="," class="form-control" v-model="form.complaint_pending_other_more_than_7" required></vue-numeric>
+                                    <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.complaint_pending_other_more_than_7">{{ errors.complaint_pending_other_more_than_7[0] }}</div>
+                                </div>
 
                                 <button type="button" class="btn btn-success mt-5 mr-3" @click.prevent="updateForm">Update <i v-if="processing" data-loading-icon="spinning-circles" data-color="white" class="w-4 h-4 ml-2"></i></button>
                                 <button type="button" class="btn btn-secondary mt-5" @click.prevent="$router.push({name: 'admin.complaints-redressals.index'})">Cancel</button>
@@ -99,10 +67,9 @@ export default {
     data: () => ({
         form:{
             complaint_disposed: '',
-            complaint_pending_3_to_10: '',
-            complaint_pending_more_than_10: '',
-            complaint_other_3_to_10: '',
-            complaint_other_more_than_10: '',
+            complaint_pending_more_than_7: '',
+            complaint_total_other_more_than_7: '',
+            complaint_pending_other_more_than_7: '',
         },
         errors: [],
         processing: false,

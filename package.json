@@ -60,7 +60,7 @@
         "vue-toastify": "^1.8.0",
         "vuex": "^3.6.2",
         "vuex-persistedstate": "^4.1.0",
-        "xlsx": "^0.16.6",
+        "xlsx": "^0.17.4",
         "zoom-vanilla.js": "^2.0.6"
     }
 }

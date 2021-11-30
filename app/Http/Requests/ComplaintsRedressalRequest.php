@@ -25,10 +25,9 @@ class ComplaintsRedressalRequest extends FormRequest
     {
         return [
             'complaint_disposed' => 'required|integer',
-            'complaint_pending_3_to_10' => 'required|integer',
-            'complaint_pending_more_than_10' => 'required|integer',
-            'complaint_other_3_to_10' => 'required|integer',
-            'complaint_other_more_than_10' => 'required|integer',
+            'complaint_pending_more_than_7' => 'required|integer',
+            'complaint_total_other_more_than_7' => 'required|integer',
+            'complaint_pending_other_more_than_7' => 'required|integer',
         ];
     }
 }

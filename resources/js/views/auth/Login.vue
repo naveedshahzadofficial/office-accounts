@@ -78,7 +78,7 @@ export default {
                     this.message = resp.data.message;
                 }else {
                     this.signIn()
-                    localStorage.setItem('authToken', resp.data.api_token);
+                    localStorage.setItem('authToken', resp.data.data.api_token);
                     this.$router.push({name: 'admin.dashboard'});
                 }
             }).catch((error)=>{
