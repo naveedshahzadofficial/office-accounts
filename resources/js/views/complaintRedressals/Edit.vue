@@ -35,9 +35,9 @@
 
                                 <div class="input-form mt-5" :class="{'has-error':(errors && errors.complaint_total_other_more_than_7)}">
                                     <label class="form-label w-full flex flex-col sm:flex-row">
-                                        Total No. of Other Complaints disposed off <span class="text-primary-3">*</span>
+                                        Total No. of Other Complaints Disposed <span class="text-primary-3">*</span>
                                     </label>
-                                    <vue-numeric   placeholder="Pending Complaints Disposed"  separator="," class="form-control" v-model="form.complaint_total_other_more_than_7" required></vue-numeric>
+                                    <vue-numeric   placeholder="Other Complaints Disposed"  separator="," class="form-control" v-model="form.complaint_total_other_more_than_7" required></vue-numeric>
                                     <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.complaint_total_other_more_than_7">{{ errors.complaint_total_other_more_than_7[0] }}</div>
                                 </div>
 

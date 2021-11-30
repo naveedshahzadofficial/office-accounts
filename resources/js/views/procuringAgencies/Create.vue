@@ -5,7 +5,7 @@
                 <!-- BEGIN: Form Validation -->
                 <div class="intro-y box">
                     <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
-                        <h2 class="font-medium text-base mr-auto">Add Procuring Agencies</h2>
+                        <h2 class="font-medium text-base mr-auto">Add Registration</h2>
                     </div>
                     <div class="p-5">
                         <div class="preview">
@@ -29,7 +29,7 @@
                                     <label class="form-label w-full flex flex-col sm:flex-row">
                                         Total No. of Public Sector Organizations (Rule 59-e) Registered <span class="text-primary-3">*</span>
                                     </label>
-                                    <vue-numeric   placeholder="Procuring agencies Registered"  separator="," class="form-control" v-model="form.public_sector_organization_59e_registered" required></vue-numeric>
+                                    <vue-numeric   placeholder="Total No. of Public Sector Organizations (Rule 59-e) Registered"  separator="," class="form-control" v-model="form.public_sector_organization_59e_registered" required></vue-numeric>
                                     <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.public_sector_organization_59e_registered">
                                         {{  errors.public_sector_organization_59e_registered[0] }}</div>
                                 </div>
@@ -38,7 +38,7 @@
                                     <label class="form-label w-full flex flex-col sm:flex-row">
                                         Total No. of Suppliers Registered <span class="text-primary-3">*</span>
                                     </label>
-                                    <vue-numeric   placeholder="Procuring agencies Registered"  separator="," class="form-control" v-model="form.suppliers_registered" required></vue-numeric>
+                                    <vue-numeric   placeholder="Total No. of Suppliers Registered"  separator="," class="form-control" v-model="form.suppliers_registered" required></vue-numeric>
                                     <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.suppliers_registered">
                                         {{  errors.suppliers_registered[0] }}</div>
                                 </div>
@@ -46,7 +46,7 @@
                                     <label class="form-label w-full flex flex-col sm:flex-row">
                                         Total No. of PSMU Registered <span class="text-primary-3">*</span>
                                     </label>
-                                    <vue-numeric   placeholder="Procuring agencies Registered"  separator="," class="form-control" v-model="form.psmu_registered" required></vue-numeric>
+                                    <vue-numeric   placeholder="Total No. of PSMU Registered"  separator="," class="form-control" v-model="form.psmu_registered" required></vue-numeric>
                                     <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.psmu_registered">
                                         {{  errors.psmu_registered[0] }}</div>
                                 </div>

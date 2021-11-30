@@ -47,7 +47,7 @@
                                     <label class="form-label w-full flex flex-col sm:flex-row">
                                         No. of Login IDs Activated <span class="text-primary-3">*</span>
                                     </label>
-                                    <vue-numeric   placeholder="Fee Violations Identified"  separator="," class="form-control" v-model="form.fee_login_ids_activated" required></vue-numeric>
+                                    <vue-numeric   placeholder="No. of Login IDs Activated"  separator="," class="form-control" v-model="form.fee_login_ids_activated" required></vue-numeric>
                                     <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.fee_login_ids_activated">
                                         {{  errors.fee_login_ids_activated[0] }}</div>
                                 </div>
@@ -56,7 +56,7 @@
                                     <label class="form-label w-full flex flex-col sm:flex-row">
                                         No. of Login IDs De-activated <span class="text-primary-3">*</span>
                                     </label>
-                                    <vue-numeric   placeholder="Verifications for Fee Deposit"  separator="," class="form-control" v-model="form.fee_login_ids_deactivated" required></vue-numeric>
+                                    <vue-numeric   placeholder="No. of Login IDs De-activated"  separator="," class="form-control" v-model="form.fee_login_ids_deactivated" required></vue-numeric>
                                     <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.fee_login_ids_deactivated">
                                         {{  errors.fee_login_ids_deactivated[0] }}</div>
                                 </div>
