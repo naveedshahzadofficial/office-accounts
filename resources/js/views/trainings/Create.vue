@@ -18,7 +18,7 @@
                                 <!-- END: FormDate -->
                                 <div class="input-form" :class="{'has-error':(errors && errors.case_initiated)}">
                                     <label class="form-label w-full flex flex-col sm:flex-row">
-                                        No. of Persons Imparted Trainngs <span class="text-primary-3">*</span>
+                                        No. of Persons Imparted Trainings <span class="text-primary-3">*</span>
                                     </label>
                                     <vue-numeric   placeholder="Persons Imparted Trainngs"  separator="," class="form-control" v-model="form.training_persons_imparted" required></vue-numeric>
                                     <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.training_persons_imparted">
