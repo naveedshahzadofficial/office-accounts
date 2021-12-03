@@ -41,12 +41,14 @@
                                 </div>
 
                                 <div class="intro-y col-span-12 overflow-auto">
-                                    <BaseTableComponent :columns="columns"  :sortKey="sortKey" :sortOrders="sortOrders" @sortBy="sortBy">
+                                    <BaseTableComponent :columns="columns" :childColumns="childColumns" :sortKey="sortKey" :sortOrders="sortOrders" @sortBy="sortBy">
                                         <tbody>
                                         <tr class="hover:bg-gray-200" v-for="row in getCollection.data" :key="row.id">
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.complaint_disposed | numFormat }}</td>
+                                            <td class="border-b dark:border-dark-5 text-center">{{ row.complaint_pending_3_to_7 | numFormat  }}</td>
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.complaint_pending_more_than_7 | numFormat  }}</td>
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.complaint_total_other_more_than_7 | numFormat  }}</td>
+                                            <td class="border-b dark:border-dark-5 text-center">{{ row.complaint_pending_other_3_to_7 | numFormat  }}</td>
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.complaint_pending_other_more_than_7 | numFormat  }}</td>
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.created_at  }}</td>
                                             <td class="border-b dark:border-dark-5 text-center">
@@ -100,9 +102,9 @@ export default {
 
         let columns = [
             { label: 'Complaints Disposed (Online)', name: 'complaint_disposed', orderable: true },
-            { label: 'Complaints Pending (Online)', name: 'complaint_pending_more_than_7'},
+            { label: 'Complaints Pending (Online)', name: null, colspan:2},
             { label: 'Other Complaints Disposed off', name: 'complaint_total_other_more_than_7'},
-            { label: 'Other Complaints Pending', name: 'complaint_pending_other_more_than_7'},
+            { label: 'Other Complaints Pending', name: null, colspan:2},
             { label: 'Date', name: 'created_at', orderable: true},
             { label: 'Actions', name: null},
         ];
@@ -112,10 +114,26 @@ export default {
             sortOrders[column.name] = -1;
         });
 
+        let childColumns = [
+            { label: '', name: null },
+            { label: 'From 3 to 7 Days', name: 'complaint_pending_3_to_7', orderable: true },
+            { label: 'More than 7 Days', name: 'complaint_pending_more_than_7', orderable: true },
+            { label: '', name: null },
+            { label: 'From 3 to 7 Days', name: 'complaint_pending_other_3_to_7', orderable: true },
+            { label: 'More than 7 Days', name: 'complaint_pending_other_more_than_7', orderable: true },
+            { label: '', name: null },
+            { label: '', name: null },
+        ];
+
+        childColumns.forEach((column) => {
+            if(column.name != null)
+                sortOrders[column.name] = -1;
+        });
 
        return {
            collection: {},
            columns: columns,
+           childColumns: childColumns,
            message: '',
            now: new Date().toISOString(),
            perPage: ['30', '50', '100', '200', '500', '1000', 'All'],

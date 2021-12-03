@@ -45,8 +45,8 @@
                                         <tbody>
                                         <tr class="hover:bg-gray-200" v-for="row in getCollection.data" :key="row.id">
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.advice_issued | numFormat }}</td>
-                                            <td class="border-b dark:border-dark-5 text-center">{{ row.advice_pending_3_to_10 | numFormat  }}</td>
-                                            <td class="border-b dark:border-dark-5 text-center">{{ row.advice_pending_more_than_10 | numFormat  }}</td>
+                                            <td class="border-b dark:border-dark-5 text-center">{{ row.advice_pending_3_to_7 | numFormat  }}</td>
+                                            <td class="border-b dark:border-dark-5 text-center">{{ row.advice_pending_more_than_7 | numFormat  }}</td>
                                             <td class="border-b dark:border-dark-5 text-center">{{ row.created_at  }}</td>
                                             <td class="border-b dark:border-dark-5 text-center">
                                                 <router-link :to="{ name: 'admin.advices.edit', params: { id: row.id } }">
@@ -111,8 +111,8 @@ export default {
 
         let childColumns = [
             { label: '', name: null },
-            { label: 'From 3 to 10 Days', name: 'advice_pending_3_to_10', orderable: true },
-            { label: 'More than 10 Days', name: 'advice_pending_more_than_10', orderable: true },
+            { label: 'From 3 to 7 Days', name: 'advice_pending_3_to_7', orderable: true },
+            { label: 'More than 7 Days', name: 'advice_pending_more_than_7', orderable: true },
             { label: '', name: null },
             { label: '', name: null },
         ];

@@ -17,8 +17,8 @@ class AdviceResource extends JsonResource
         return [
             'id' => $this->id,
             'advice_issued' => $this->advice_issued,
-            'advice_pending_3_to_10' => $this->advice_pending_3_to_10,
-            'advice_pending_more_than_10' => $this->advice_pending_more_than_10,
+            'advice_pending_3_to_7' => $this->advice_pending_3_to_7,
+            'advice_pending_more_than_7' => $this->advice_pending_more_than_7,
             'user_id' => $this->user_id,
             'advice_status' => $this->advice_status,
             'created_at' => $this->created_at ? $this->created_at->format('d-m-Y') : null,

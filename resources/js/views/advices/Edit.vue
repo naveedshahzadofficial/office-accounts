@@ -32,21 +32,21 @@
                                 </div>
                                 <div class="grid grid-cols-12 gap-6">
                                     <div class="col-span-12 lg:col-span-6">
-                                        <div class="input-form" :class="{'has-error':(errors && errors.advice_pending_3_to_10)}">
+                                        <div class="input-form" :class="{'has-error':(errors && errors.advice_pending_3_to_7)}">
                                             <label class="form-label w-full flex flex-col sm:flex-row">
-                                                From 3 to 10 Days <span class="text-primary-3">*</span>
+                                                From 3 to 7 Days <span class="text-primary-3">*</span>
                                             </label>
-                                            <vue-numeric   placeholder="From 3 to 10 Days Advices Pending"  separator="," class="form-control" v-model="form.advice_pending_3_to_10" required></vue-numeric>
-                                            <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.advice_pending_3_to_10">{{ errors.advice_pending_3_to_10[0] }}</div>
+                                            <vue-numeric   placeholder="From 3 to 7 Days Advices Pending"  separator="," class="form-control" v-model="form.advice_pending_3_to_7" required></vue-numeric>
+                                            <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.advice_pending_3_to_7">{{ errors.advice_pending_3_to_7[0] }}</div>
                                         </div>
                                     </div>
                                     <div class="col-span-12 lg:col-span-6">
-                                        <div class="input-form" :class="{'has-error':(errors && errors.advice_pending_more_than_10)}">
+                                        <div class="input-form" :class="{'has-error':(errors && errors.advice_pending_more_than_7)}">
                                             <label class="form-label w-full flex flex-col sm:flex-row">
-                                                More than 10 Days <span class="text-primary-3">*</span>
+                                                More than 7 Days <span class="text-primary-3">*</span>
                                             </label>
-                                            <vue-numeric   placeholder="More than 10 Days Advices Pending"  separator="," class="form-control" v-model="form.advice_pending_more_than_10" required></vue-numeric>
-                                            <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.advice_pending_more_than_10">{{ errors.advice_pending_more_than_10[0] }}</div>
+                                            <vue-numeric   placeholder="More than 7 Days Advices Pending"  separator="," class="form-control" v-model="form.advice_pending_more_than_7" required></vue-numeric>
+                                            <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.advice_pending_more_than_7">{{ errors.advice_pending_more_than_7[0] }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -75,8 +75,8 @@ export default {
     data: () => ({
         form:{
             advice_issued: '',
-            advice_pending_3_to_10: '',
-            advice_pending_more_than_10: ''
+            advice_pending_3_to_7: '',
+            advice_pending_more_than_7: ''
         },
         errors: [],
         processing: false,

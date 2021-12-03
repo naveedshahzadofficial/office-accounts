@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Advice extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['advice_issued', 'advice_pending_3_to_10', 'advice_pending_more_than_10','user_id', 'advice_status'];
+    protected $fillable = ['advice_issued', 'advice_pending_3_to_7', 'advice_pending_more_than_7','user_id', 'advice_status'];
 
     public function user(){
         return $this->belongsTo(User::class);

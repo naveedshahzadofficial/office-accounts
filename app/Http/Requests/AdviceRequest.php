@@ -25,8 +25,8 @@ class AdviceRequest extends FormRequest
     {
         return [
             'advice_issued' => 'required|integer',
-            'advice_pending_3_to_10' => 'required|integer',
-            'advice_pending_more_than_10' => 'required|integer',
+            'advice_pending_3_to_7' => 'required|integer',
+            'advice_pending_more_than_7' => 'required|integer',
         ];
     }
 }
