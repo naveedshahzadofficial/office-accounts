@@ -45,7 +45,7 @@
                                             <label class="form-label w-full flex flex-col sm:flex-row">
                                                 From 3 to 07 Days <span class="text-primary-3">*</span>
                                             </label>
-                                            <vue-numeric   placeholder="From 3 to 10 Days Advices Pending"  separator="," class="form-control" v-model="form.inspection_pending_3_to_7" required></vue-numeric>
+                                            <vue-numeric   placeholder="From 3 to 7 Days"  separator="," class="form-control" v-model="form.inspection_pending_3_to_7" required></vue-numeric>
                                             <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.inspection_pending_3_to_7">{{ errors.inspection_pending_3_to_7[0] }}</div>
                                         </div>
                                     </div>
@@ -54,7 +54,7 @@
                                             <label class="form-label w-full flex flex-col sm:flex-row">
                                                 More than 07 Days <span class="text-primary-3">*</span>
                                             </label>
-                                            <vue-numeric   placeholder="More than 10 Days Advices Pending"  separator="," class="form-control" v-model="form.inspection_pending_more_than_7" required></vue-numeric>
+                                            <vue-numeric   placeholder="More than 7 Days"  separator="," class="form-control" v-model="form.inspection_pending_more_than_7" required></vue-numeric>
                                             <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.inspection_pending_more_than_7">{{ errors.inspection_pending_more_than_7[0] }}</div>
                                         </div>
                                     </div>

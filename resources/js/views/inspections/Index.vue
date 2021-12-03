@@ -116,8 +116,8 @@ export default {
         let childColumns = [
             { label: '', name: null },
             { label: '', name: null },
-            { label: 'From 3 to 10 Days', name: 'inspection_pending_3_to_7', orderable: true },
-            { label: 'More than 10 Days', name: 'inspection_pending_more_than_7', orderable: true },
+            { label: 'From 3 to 7 Days', name: 'inspection_pending_3_to_7', orderable: true },
+            { label: 'More than 7 Days', name: 'inspection_pending_more_than_7', orderable: true },
             { label: '', name: null },
             { label: '', name: null },
             { label: '', name: null },
