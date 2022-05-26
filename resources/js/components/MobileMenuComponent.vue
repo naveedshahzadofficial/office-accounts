@@ -4,13 +4,17 @@
             <a href="" class="flex mr-auto">
                 <img alt="PMS PPRA" class="w-6" :src="dashboardLogo">
             </a>
-            <a href="javascript:;" id="mobile-menu-toggler"> <i data-feather="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
+            <a href="javascript:;" id="mobile-menu-toggler">
+                <feather type="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></feather>
+            </a>
         </div>
         <ul class="border-t border-theme-29 py-5 hidden">
 
             <li>
-                <a href="side-menu-light-inbox.html" class="menu">
-                    <div class="menu__icon"> <i data-feather="inbox"></i> </div>
+                <a href="#" class="menu">
+                    <div class="menu__icon">
+                        <feather type="inbox"></feather>
+                    </div>
                     <div class="menu__title"> Inbox </div>
                 </a>
             </li>

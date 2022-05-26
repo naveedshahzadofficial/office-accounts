@@ -1,9 +1,9 @@
 <template>
-    <div class="input-form mb-5">
+    <div class="input-form mb-5 mt-5">
         <label class="form-label w-full flex flex-col sm:flex-row">
-            Date <span class="text-primary-3">*</span>
+          {{ date_label }} <span class="text-primary-3">*</span>
         </label>
-        <input placeholder="Date" type="text" readonly class="form-control"  v-model="date_field" >
+        <input placeholder="Date" type="text" class="form-control"  v-model="date_field" >
     </div>
 </template>
 
@@ -12,12 +12,12 @@ import moment from "moment";
 
 export default {
     name: "FormDateComponent",
-    props: ['created_at'],
+    props: ['date_label','date_value'],
     data: ()=> ({
         date_field: ''
     }),
     mounted() {
-        this.date_field = this.created_at;
+        this.date_field = this.date_value;
     }
 }
 </script>

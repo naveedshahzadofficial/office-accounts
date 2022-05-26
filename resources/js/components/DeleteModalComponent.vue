@@ -4,7 +4,7 @@
             <div class="modal-content">
                 <div class="modal-body p-0">
                     <div class="p-5 text-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle w-16 h-16 text-theme-6 mx-auto mt-3"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                        <feather type="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></feather>
                         <div class="text-3xl mt-5">Are you sure?</div>
                         <div class="text-gray-600 mt-2">
                             Do you really want to delete this record?

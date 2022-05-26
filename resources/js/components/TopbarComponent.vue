@@ -5,7 +5,7 @@
         <div class="-intro-x breadcrumb mr-auto hidden sm:flex">
             <div v-if="breadcrumbs">
             <a href="">Application</a>
-            <i data-feather="chevron-right" class="breadcrumb__icon"></i>
+            <feather type="chevron-right" class="breadcrumb__icon"></feather>
             <a href="" class="breadcrumb--active">Dashboard</a>
             </div>
         </div>
@@ -20,14 +20,14 @@
                 <div class="dropdown-menu__content box bg-theme-26 dark:bg-dark-6 text-white">
                     <div class="p-4 border-b border-theme-27 dark:border-dark-3">
                         <div class="font-medium">{{ userProfile.name }}</div>
-                        <div class="text-xs text-theme-28 mt-0.5 dark:text-gray-600" v-if="userProfile.role">{{ userProfile.role.role_name }}</div>
+                        <div class="text-xs text-theme-28 mt-0.5 text-white dark:text-gray-600" v-if="userProfile.role">{{ userProfile.role.role_name }}</div>
                     </div>
                     <div class="p-2">
-                        <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="user" class="w-4 h-4 mr-2"></i> Profile </a>
-                        <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="lock" class="w-4 h-4 mr-2"></i> Reset Password </a>
+                        <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <feather type="user" class="w-4 h-4 mr-2"></feather> Profile </a>
+                        <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <feather type="lock" class="w-4 h-4 mr-2"></feather> Reset Password </a>
                     </div>
                     <div class="p-2 border-t border-theme-27 dark:border-dark-3">
-                        <a @click.prevent="logout()" class="flex cursor-pointer items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Logout </a>
+                        <a @click.prevent="logout()" class="flex cursor-pointer items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <feather type="toggle-right" class="w-4 h-4 mr-2"></feather> Logout </a>
                     </div>
                 </div>
             </div>
