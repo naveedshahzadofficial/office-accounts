@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\
     UserController,
     AuthController,
     UnitController,
+    ColorController,
 };
 
 Route::group(['middleware'=>'auth:sanctum'],function (){
@@ -16,6 +17,7 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::apiResource('/users', UserController::class);
     Route::post('/load-roles',[RoleController::class,'roles']);
     Route::apiResource('/units', UnitController::class);
+    Route::apiResource('/colors', ColorController::class);
 });
 
 Route::post('/login', [AuthController::class,'login']);

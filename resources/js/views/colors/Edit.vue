@@ -32,13 +32,13 @@
                                         {{  errors.hex_code[0] }}</div>
                                 </div>
 
-                                <div class="input-form mt-5" :class="{'has-error':(errors && errors.rbg_code)}">
+                                <div class="input-form mt-5" :class="{'has-error':(errors && errors.rgb_code)}">
                                     <label class="form-label w-full flex flex-col sm:flex-row">
                                         RGB Code<span class="text-primary-3"></span>
                                     </label>
-                                    <input type="text" placeholder="Short Name"  class="form-control" v-model="form.rbg_code" required />
-                                    <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.rbg_code">
-                                        {{  errors.rbg_code[0] }}</div>
+                                    <input type="text" placeholder="Short Name"  class="form-control" v-model="form.rgb_code" required />
+                                    <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.rgb_code">
+                                        {{  errors.rgb_code[0] }}</div>
                                 </div>
 
                                 <div class="input-form mt-5" :class="{'has-error':(errors && errors.color_status)}">
