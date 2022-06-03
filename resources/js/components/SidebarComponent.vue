@@ -27,6 +27,13 @@
                 </router-link>
             </li>
 
+            <li v-if="isSuperAdmin || isAdmin">
+                <router-link class="side-menu" :to="{ name: 'admin.units.index'}" :class="{'side-menu--active':activeMenu==='Units'}">
+                    <div class="side-menu__icon"><feather type="triangle"></feather></div>
+                    <div class="side-menu__title"> Units </div>
+                </router-link>
+            </li>
+
         </ul>
     </nav>
 </template>

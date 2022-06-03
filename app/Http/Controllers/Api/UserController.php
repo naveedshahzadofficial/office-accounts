@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -41,7 +41,7 @@ class UserController extends ApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(StoreUserRequest $request)
     {
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);
@@ -58,7 +58,8 @@ class UserController extends ApiController
      */
     public function show(User $user)
     {
-        //
+        $user->load('role');
+        return $this->respond(['row' => new UserResource($user)]);
     }
 
     /**
@@ -68,9 +69,13 @@ class UserController extends ApiController
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        //
+        $data = $request->all();
+        if(isset($data['password']) && !empty($data['password']))
+            $data['password'] = bcrypt($data['password']);
+        $user->update($data);
+        return $this->setStatusCode(201)->sendSuccessReponse('User has been updated successfully.');
     }
 
     /**

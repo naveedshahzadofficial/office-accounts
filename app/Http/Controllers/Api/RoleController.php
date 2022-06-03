@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\RoleRequest;
+use App\Http\Requests\StoreRoleRequest;
+use App\Http\Requests\UpdateRoleRequest;
 use App\Http\Resources\RoleResource;
 use App\Models\Role;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -45,7 +44,7 @@ class RoleController extends ApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(RoleRequest $request)
+    public function store(StoreRoleRequest $request)
     {
         $role = Role::create($request->all());
         return $this->sendSuccessReponse('Role has been saved successfully.',$role);
@@ -70,7 +69,7 @@ class RoleController extends ApiController
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(UpdateRoleRequest $request, Role $role)
     {
         $role->update($request->all());
         return $this->setStatusCode(201)->sendSuccessReponse('Role has been updated successfully.');

@@ -14,6 +14,10 @@ import User from "../views/users/Index.vue";
 import UserCreate from "../views/users/Create";
 import UserEdit from "../views/users/Edit";
 
+import Unit from "../views/units/Index.vue";
+import UnitCreate from "../views/units/Create";
+import UnitEdit from "../views/units/Edit";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -103,6 +107,36 @@ const routes = [
         }
     },
     /* End: Users */
+
+    /* Begin: Units */
+    {
+        path: '/admin/units',
+        name: 'admin.units.index',
+        component: Unit,
+        meta:{
+            middleware:"auth",
+            title: 'Units'
+        }
+    },
+    {
+        path: '/admin/units/create',
+        name: 'admin.units.create',
+        component: UnitCreate,
+        meta:{
+            middleware:"auth",
+            title: 'Units'
+        }
+    },
+    {
+        path: "/admin/units/edit/:id",
+        name: "admin.units.edit",
+        component: UnitEdit,
+        meta:{
+            middleware:"auth",
+            title: 'Units'
+        }
+    },
+    /* End: Units */
 
     {
         path: '/about',
