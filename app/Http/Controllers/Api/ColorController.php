@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class ColorController extends Controller
+class ColorController extends ApiController
 {
     /**
      * Display a listing of the resource.

@@ -35,7 +35,7 @@
             </li>
 
             <li v-if="isSuperAdmin || isAdmin">
-                <router-link class="side-menu" :to="{ name: 'admin.colors.index'}" :class="{'side-menu--active':activeMenu==='Units'}">
+                <router-link class="side-menu" :to="{ name: 'admin.colors.index'}" :class="{'side-menu--active':activeMenu==='Colors'}">
                     <div class="side-menu__icon"><feather type="target"></feather></div>
                     <div class="side-menu__title"> Colors </div>
                 </router-link>
