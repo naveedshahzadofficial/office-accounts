@@ -34,6 +34,13 @@
                 </router-link>
             </li>
 
+            <li v-if="isSuperAdmin || isAdmin">
+                <router-link class="side-menu" :to="{ name: 'admin.colors.index'}" :class="{'side-menu--active':activeMenu==='Units'}">
+                    <div class="side-menu__icon"><feather type="target"></feather></div>
+                    <div class="side-menu__title"> Colors </div>
+                </router-link>
+            </li>
+
         </ul>
     </nav>
 </template>

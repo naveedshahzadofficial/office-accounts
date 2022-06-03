@@ -18,6 +18,10 @@ import Unit from "../views/units/Index.vue";
 import UnitCreate from "../views/units/Create";
 import UnitEdit from "../views/units/Edit";
 
+import Color from "../views/colors/Index.vue";
+import ColorCreate from "../views/colors/Create";
+import ColorEdit from "../views/colors/Edit";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -137,6 +141,36 @@ const routes = [
         }
     },
     /* End: Units */
+
+    /* Begin: Colors */
+    {
+        path: '/admin/colors',
+        name: 'admin.colors.index',
+        component: Color,
+        meta:{
+            middleware:"auth",
+            title: 'Colors'
+        }
+    },
+    {
+        path: '/admin/colors/create',
+        name: 'admin.colors.create',
+        component: ColorCreate,
+        meta:{
+            middleware:"auth",
+            title: 'Colors'
+        }
+    },
+    {
+        path: "/admin/colors/edit/:id",
+        name: "admin.colors.edit",
+        component: ColorEdit,
+        meta:{
+            middleware:"auth",
+            title: 'Colors'
+        }
+    },
+    /* End: Colors */
 
     {
         path: '/about',
