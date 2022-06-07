@@ -8,6 +8,8 @@ use App\Http\Controllers\Api\
     AuthController,
     UnitController,
     ColorController,
+    CategoryController,
+    SubCategoryController,
 };
 
 Route::group(['middleware'=>'auth:sanctum'],function (){
@@ -18,6 +20,10 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::post('/load-roles',[RoleController::class,'roles']);
     Route::apiResource('/units', UnitController::class);
     Route::apiResource('/colors', ColorController::class);
+    Route::apiResource('/categories', CategoryController::class);
+    Route::apiResource('/sub-categories', SubCategoryController::class);
+    Route::post('/load-categories',[CategoryController::class,'categories']);
+
 });
 
 Route::post('/login', [AuthController::class,'login']);

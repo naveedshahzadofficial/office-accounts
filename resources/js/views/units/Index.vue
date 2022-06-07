@@ -66,7 +66,7 @@
 
                                 </div>
 
-                                <p class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center" v-if="getCollection.meta && !getCollection.meta.total">Currently no advice is added.</p>
+                                <p class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center" v-if="getCollection.meta && !getCollection.meta.total">Currently no unit is added.</p>
 
                                 <!-- BEGIN: Pagination -->
                                 <PaginationComponent :pagination="pagination" :links="links" @page-change="loadCollection"></PaginationComponent>

@@ -22,6 +22,14 @@ import Color from "../views/colors/Index.vue";
 import ColorCreate from "../views/colors/Create";
 import ColorEdit from "../views/colors/Edit";
 
+import Category from "../views/categories/Index.vue";
+import CategoryCreate from "../views/categories/Create";
+import CategoryEdit from "../views/categories/Edit";
+
+import SubCategory from "../views/sub_categories/Index.vue";
+import SubCategoryCreate from "../views/sub_categories/Create";
+import SubCategoryEdit from "../views/sub_categories/Edit";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -171,6 +179,68 @@ const routes = [
         }
     },
     /* End: Colors */
+
+
+    /* Begin: Categories */
+    {
+        path: '/admin/categories',
+        name: 'admin.categories.index',
+        component: Category,
+        meta:{
+            middleware:"auth",
+            title: 'Categories'
+        }
+    },
+    {
+        path: '/admin/categories/create',
+        name: 'admin.categories.create',
+        component: CategoryCreate,
+        meta:{
+            middleware:"auth",
+            title: 'Categories'
+        }
+    },
+    {
+        path: "/admin/categories/edit/:id",
+        name: "admin.categories.edit",
+        component: CategoryEdit,
+        meta:{
+            middleware:"auth",
+            title: 'Categories'
+        }
+    },
+    /* End: Categories */
+
+
+    /* Begin: SubCategories */
+    {
+        path: '/admin/sub-categories',
+        name: 'admin.sub-categories.index',
+        component: SubCategory,
+        meta:{
+            middleware:"auth",
+            title: 'SubCategories'
+        }
+    },
+    {
+        path: '/admin/sub-categories/create',
+        name: 'admin.sub-categories.create',
+        component: SubCategoryCreate,
+        meta:{
+            middleware:"auth",
+            title: 'SubCategories'
+        }
+    },
+    {
+        path: "/admin/sub-categories/edit/:id",
+        name: "admin.sub-categories.edit",
+        component: SubCategoryEdit,
+        meta:{
+            middleware:"auth",
+            title: 'SubCategories'
+        }
+    },
+    /* End: SubCategories */
 
     {
         path: '/about',

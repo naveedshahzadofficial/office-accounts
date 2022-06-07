@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreColorRequest;
+use App\Http\Requests\UpdateColorRequest;
 use App\Http\Resources\ColorResource;
 use App\Models\Color;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -41,7 +41,7 @@ class ColorController extends ApiController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreColorRequest $request)
     {
         $color = Color::create($request->all());
         return $this->sendSuccessReponse('Color has been saved successfully.',$color);
@@ -66,7 +66,7 @@ class ColorController extends ApiController
      * @param  \App\Models\Color  $color
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Color $color)
+    public function update(UpdateColorRequest $request, Color $color)
     {
         $color->update($request->all());
         return $this->setStatusCode(201)->sendSuccessReponse('Color has been updated successfully.');

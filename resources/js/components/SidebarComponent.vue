@@ -41,6 +41,20 @@
                 </router-link>
             </li>
 
+            <li v-if="isSuperAdmin || isAdmin">
+                <router-link class="side-menu" :to="{ name: 'admin.categories.index'}" :class="{'side-menu--active':activeMenu==='Categories'}">
+                    <div class="side-menu__icon"><feather type="grid"></feather></div>
+                    <div class="side-menu__title"> Categories </div>
+                </router-link>
+            </li>
+
+            <li v-if="isSuperAdmin || isAdmin">
+                <router-link class="side-menu" :to="{ name: 'admin.sub-categories.index'}" :class="{'side-menu--active':activeMenu==='SubCategories'}">
+                    <div class="side-menu__icon"><feather type="grid"></feather></div>
+                    <div class="side-menu__title"> SubCategories </div>
+                </router-link>
+            </li>
+
         </ul>
     </nav>
 </template>
