@@ -55,6 +55,13 @@
                 </router-link>
             </li>
 
+            <li v-if="isSuperAdmin || isAdmin">
+                <router-link class="side-menu" :to="{ name: 'admin.attributes.index'}" :class="{'side-menu--active':['Attributes','AttributeValues'].includes(activeMenu)}">
+                    <div class="side-menu__icon"><feather type="grid"></feather></div>
+                    <div class="side-menu__title"> Attributes </div>
+                </router-link>
+            </li>
+
         </ul>
     </nav>
 </template>

@@ -1,34 +1,42 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from '../store'
-import Home from '../views/Home.vue'
+import Home from '../views/Home'
 
 import Login from "../views/auth/Login";
 import AdminDashboard from "../views/dashboards/AdminDashboard";
 
-import Role from "../views/roles/Index.vue";
+import Role from "../views/roles/Index";
 import RoleCreate from "../views/roles/Create";
 import RoleEdit from "../views/roles/Edit";
 
-import User from "../views/users/Index.vue";
+import User from "../views/users/Index";
 import UserCreate from "../views/users/Create";
 import UserEdit from "../views/users/Edit";
 
-import Unit from "../views/units/Index.vue";
+import Unit from "../views/units/Index";
 import UnitCreate from "../views/units/Create";
 import UnitEdit from "../views/units/Edit";
 
-import Color from "../views/colors/Index.vue";
+import Color from "../views/colors/Index";
 import ColorCreate from "../views/colors/Create";
 import ColorEdit from "../views/colors/Edit";
 
-import Category from "../views/categories/Index.vue";
+import Category from "../views/categories/Index";
 import CategoryCreate from "../views/categories/Create";
 import CategoryEdit from "../views/categories/Edit";
 
-import SubCategory from "../views/sub_categories/Index.vue";
+import SubCategory from "../views/sub_categories/Index";
 import SubCategoryCreate from "../views/sub_categories/Create";
 import SubCategoryEdit from "../views/sub_categories/Edit";
+
+import Attribute from "../views/attributes/Index";
+import AttributeCreate from "../views/attributes/Create";
+import AttributeEdit from "../views/attributes/Edit";
+
+import AttributeValue from "../views/attribute_values/Index";
+import AttributeValueCreate from "../views/attribute_values/Create";
+import AttributeValueEdit from "../views/attribute_values/Edit";
 
 Vue.use(VueRouter)
 
@@ -241,6 +249,68 @@ const routes = [
         }
     },
     /* End: SubCategories */
+
+    /* Begin: Attributes */
+    {
+        path: '/admin/attributes',
+        name: 'admin.attributes.index',
+        component: Attribute,
+        meta:{
+            middleware:"auth",
+            title: 'Attributes'
+        }
+    },
+    {
+        path: '/admin/attributes/create',
+        name: 'admin.attributes.create',
+        component: AttributeCreate,
+        meta:{
+            middleware:"auth",
+            title: 'Attributes'
+        }
+    },
+    {
+        path: "/admin/attributes/edit/:id",
+        name: "admin.attributes.edit",
+        component: AttributeEdit,
+        meta:{
+            middleware:"auth",
+            title: 'Attributes'
+        }
+    },
+    /* End: Attributes */
+
+    /* Begin: Attributes Values */
+
+    {
+        path: "/admin/attributes/:attribute_id/attribute-values",
+        name: "admin.attributes.attribute-values.index",
+        component: AttributeValue,
+        meta:{
+            middleware:"auth",
+            title: 'AttributeValues'
+        }
+    },
+    {
+        path: "/admin/attributes/:attribute_id/attribute-values/create",
+        name: "admin.attributes.attribute-values.create",
+        component: AttributeValueCreate,
+        meta:{
+            middleware:"auth",
+            title: 'AttributeValues'
+        }
+    },
+    {
+        path: "/admin/attributes/:attribute_id/attribute-values/edit/:id",
+        name: "admin.attributes.attribute-values.edit",
+        component: AttributeValueEdit,
+        meta:{
+            middleware:"auth",
+            title: 'AttributeValues'
+        }
+    },
+
+    /* End: Attributes Values */
 
     {
         path: '/about',

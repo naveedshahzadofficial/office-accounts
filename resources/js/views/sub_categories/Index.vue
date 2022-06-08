@@ -51,13 +51,11 @@
                                                 <div class="flex items-center justify-center text-theme-6" :class="row.sub_category_status?'text-theme-9':'text-theme-6'">{{ row.sub_category_status?'Active':'Inactive'}}</div>
                                             </td>
                                             <td class="border-b dark:border-dark-5 text-center">
-                                                <router-link :to="{ name: 'admin.sub-categories.edit', params: { id: row.id } }">
+                                                <router-link class="mr-2" title="Edit" :to="{ name: 'admin.sub-categories.edit', params: { id: row.id } }">
                                                     <feather type="check-square" class="w-4 h-4 mr-1"></feather>
-                                                    Edit
                                                 </router-link>
-                                                <span class="ml-3 text-theme-6 cursor-pointer" @click.prevent="confirmDelete(row.id)">
+                                                <span title="Delete" class="text-theme-6 cursor-pointer" @click.prevent="confirmDelete(row.id)">
                                                     <feather type="trash-2" class="w-4 h-4 mr-1"></feather>
-                                                    Delete
                                                 </span>
                                             </td>
                                         </tr>
