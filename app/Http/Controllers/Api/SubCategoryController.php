@@ -83,4 +83,10 @@ class SubCategoryController extends ApiController
         $subCategory->delete();
         return $this->sendSuccessReponse('SubCategory has been deleted successfully.');
     }
+
+    public function sub_categories()
+    {
+        return SubCategoryResource::collection(SubCategory::where('sub_category_status',1)->get());
+
+    }
 }

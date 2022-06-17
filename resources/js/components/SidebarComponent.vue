@@ -1,8 +1,8 @@
 <template>
     <nav class="side-nav">
         <a href="" class="intro-x flex items-center pl-5 pt-4">
-            <img alt="PMS PPRA" class="w-10" :src="dashboardLogo">
-            <span class="hidden xl:block text-white text-lg ml-3"> PAS <span class="font-medium">&nbsp;PPRA</span> </span>
+            <img alt="Accounts" class="w-10" :src="dashboardLogo">
+            <span class="hidden xl:block text-white text-lg ml-3"><span class="font-medium">Accounts</span> </span>
         </a>
         <div class="side-nav__devider my-6"></div>
         <ul>
@@ -61,6 +61,15 @@
                     <div class="side-menu__title"> Attributes </div>
                 </router-link>
             </li>
+
+            <li v-if="isSuperAdmin || isAdmin">
+                <router-link class="side-menu" :to="{ name: 'admin.products.index'}" :class="{'side-menu--active':activeMenu==='Products'}">
+                    <div class="side-menu__icon"><feather type="shopping-cart"></feather></div>
+                    <div class="side-menu__title"> Products </div>
+                </router-link>
+            </li>
+
+
 
         </ul>
     </nav>

@@ -8,6 +8,10 @@
                         <h2 class="font-medium text-base mr-auto"><b v-if="getAdditional.name">{{  getAdditional.name }}:&nbsp;</b>Attribute Values</h2>
 
                         <div class="form-check w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0">
+                            <button class="btn btn-secondary shadow-md mr-2" @click.prevent="$router.push({name: 'admin.attributes.index'})">
+                                <feather type="arrow-left" class="w-4 h-4"></feather>
+                                &nbsp;Back
+                            </button>
                             <button class="btn btn-success shadow-md mr-2" @click.prevent="$router.push({name: 'admin.attributes.attribute-values.create', params: { attribute_id: $route.params.attribute_id }})">
                                 <feather type="plus" class="w-4 h-4"></feather>
                                 &nbsp;Add

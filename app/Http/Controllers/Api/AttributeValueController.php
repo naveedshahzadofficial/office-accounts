@@ -89,4 +89,10 @@ class AttributeValueController extends ApiController
         $attributeValue->delete();
         return $this->sendSuccessReponse('Attribute value has been deleted successfully.');
     }
+
+    public function attribute_values()
+    {
+        return AttributeValueResource::collection(AttributeValue::where('status',1)->get());
+
+    }
 }

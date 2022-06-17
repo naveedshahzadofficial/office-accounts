@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\
     SubCategoryController,
     AttributeController,
     AttributeValueController,
+    ProductController,
 };
 
 Route::group(['middleware'=>'auth:sanctum'],function (){
@@ -21,6 +22,11 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     /* Start: load definitions */
     Route::post('/load-roles',[RoleController::class,'roles']);
     Route::post('/load-categories',[CategoryController::class,'categories']);
+    Route::post('/load-sub-categories',[SubCategoryController::class,'sub_categories']);
+    Route::post('/load-units',[UnitController::class,'units']);
+    Route::post('/load-colors',[ColorController::class,'colors']);
+    Route::post('/load-attributes',[AttributeController::class,'attributes']);
+    Route::post('/load-attribute-values',[AttributeValueController::class,'attribute_values']);
     /* End: load definitions */
 
     Route::apiResource('/roles', RoleController::class);
@@ -31,6 +37,8 @@ Route::group(['middleware'=>'auth:sanctum'],function (){
     Route::apiResource('/sub-categories', SubCategoryController::class);
     Route::apiResource('/attributes', AttributeController::class);
     Route::apiResource('/attributes.attribute-values', AttributeValueController::class);
+    Route::apiResource('/products', ProductController::class);
+
 
 });
 

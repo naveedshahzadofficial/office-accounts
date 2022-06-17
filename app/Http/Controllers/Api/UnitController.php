@@ -82,4 +82,10 @@ class UnitController extends ApiController
         $unit->delete();
         return $this->sendSuccessReponse('Unit has been deleted successfully.');
     }
+
+    public function units()
+    {
+        return UnitResource::collection(Unit::where('unit_status',1)->get());
+
+    }
 }

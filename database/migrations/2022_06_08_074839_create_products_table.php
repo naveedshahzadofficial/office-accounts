@@ -18,6 +18,10 @@ class CreateProductsTable extends Migration
             $table->foreignId('category_id')->nullable()->constrained();
             $table->foreignId('sub_category_id')->nullable()->constrained();
             $table->string('product_name');
+            $table->foreignId('unit_id')->nullable()->constrained();
+            $table->decimal('unit_price',11,2)->nullable()->default(0.00);
+            $table->string('shipping_type')->nullable();
+            $table->decimal('shipping_cost',11,2)->nullable()->default(0.00);
             $table->text('description')->nullable();
             $table->schemalessAttributes('attributes');
             $table->unsignedTinyInteger('product_status')->nullable()->default(1);

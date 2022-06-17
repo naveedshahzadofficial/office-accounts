@@ -38,6 +38,10 @@ import AttributeValue from "../views/attribute_values/Index";
 import AttributeValueCreate from "../views/attribute_values/Create";
 import AttributeValueEdit from "../views/attribute_values/Edit";
 
+import Product from "../views/products/Index";
+import ProductCreate from "../views/products/Create";
+import ProductEdit from "../views/products/Edit";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -311,6 +315,37 @@ const routes = [
     },
 
     /* End: Attributes Values */
+
+
+    /* Begin: Products */
+    {
+        path: '/admin/products',
+        name: 'admin.products.index',
+        component: Product,
+        meta:{
+            middleware:"auth",
+            title: 'Products'
+        }
+    },
+    {
+        path: '/admin/products/create',
+        name: 'admin.products.create',
+        component: ProductCreate,
+        meta:{
+            middleware:"auth",
+            title: 'Products'
+        }
+    },
+    {
+        path: "/admin/products/edit/:id",
+        name: "admin.products.edit",
+        component: ProductEdit,
+        meta:{
+            middleware:"auth",
+            title: 'Products'
+        }
+    },
+    /* End: Products */
 
     {
         path: '/about',

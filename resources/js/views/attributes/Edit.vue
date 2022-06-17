@@ -18,7 +18,7 @@
                                     <label class="form-label w-full flex flex-col sm:flex-row">
                                         Name<span class="text-primary-3">*</span>
                                     </label>
-                                    <input type="text" placeholder="Color Name"  class="form-control" v-model="form.name" required />
+                                    <input type="text" placeholder="Attribute Name"  class="form-control" v-model="form.name" required />
                                     <div class="pristine-error text-primary-3 mt-2" v-if="errors && errors.name">
                                         {{  errors.name[0] }}</div>
                                 </div>

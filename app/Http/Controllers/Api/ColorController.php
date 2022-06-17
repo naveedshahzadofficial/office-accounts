@@ -85,4 +85,10 @@ class ColorController extends ApiController
         return $this->sendSuccessReponse('Color has been deleted successfully.');
 
     }
+
+    public function colors()
+    {
+        return ColorResource::collection(Color::where('color_status',1)->get());
+
+    }
 }
